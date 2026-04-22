@@ -1,0 +1,144 @@
+.field-control {
+  display: grid;
+  width: 100%;
+}
+
+.field-control__label {
+  margin: 0 0 10px;
+  color: var(--color-text-primary);
+}
+
+.field-control__shell {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: #f2f1f0;
+  color: var(--color-text-primary);
+  transition:
+    box-shadow 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.field-control__shell:focus-within {
+  box-shadow: inset 0 0 0 1px rgba(17, 19, 24, 0.18);
+}
+
+.field-control--overlay .field-control__shell {
+  background: #fff;
+}
+
+.field-control--error .field-control__shell {
+  box-shadow: inset 0 0 0 1px var(--color-text-error);
+}
+
+.field-control__lead,
+.field-control__trail {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: var(--color-text-primary);
+}
+
+.field-control__lead {
+  margin-right: 12px;
+}
+
+.field-control__trail {
+  margin-left: 12px;
+}
+
+.field-control__input,
+.field-control__select {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  letter-spacing: var(--font-letter-spacing-base);
+}
+
+.field-control__input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.field-control__input:focus,
+.field-control__select:focus {
+  outline: none;
+}
+
+.field-control__select {
+  appearance: none;
+}
+
+.field-control__postfix {
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.field-control__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.field-control__hint {
+  margin: 10px 0 0;
+  color: var(--color-text-secondary);
+}
+
+.field-control--error .field-control__hint {
+  color: var(--color-text-error);
+}
+
+.field-control--size-s .field-control__shell {
+  min-height: 36px;
+  padding: 9px 10px 11px 14px;
+  border-radius: 12px;
+}
+
+.field-control--size-s .field-control__input,
+.field-control--size-s .field-control__select,
+.field-control--size-s .field-control__postfix {
+  font-size: var(--type-s20-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-s20-line-height);
+}
+
+.field-control--size-m .field-control__shell {
+  min-height: 44px;
+  padding: 11px 12px 13px 16px;
+  border-radius: 12px;
+}
+
+.field-control--size-m .field-control__input,
+.field-control--size-m .field-control__select,
+.field-control--size-m .field-control__postfix {
+  font-size: var(--type-m20-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-m20-line-height);
+}
+
+.field-control--size-l .field-control__shell {
+  min-height: 52px;
+  padding: 15px 16px 17px 18px;
+  border-radius: 16px;
+}
+
+.field-control--size-l .field-control__input,
+.field-control--size-l .field-control__select,
+.field-control--size-l .field-control__postfix {
+  font-size: var(--type-m20-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-m20-line-height);
+}

@@ -1,0 +1,5 @@
+.sidebar-navigation {
+  display: grid;
+  gap: 6px;
+  margin-top: 2px;
+}

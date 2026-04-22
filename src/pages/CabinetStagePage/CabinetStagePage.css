@@ -1,0 +1,18 @@
+.cabinet-stage-page__title {
+  margin: 22px 0 18px;
+}
+
+.cabinet-stage-page__title h1 {
+  margin: 0;
+  color: #000;
+  font-size: var(--type-h1-font-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--type-h1-line-height);
+}
+
+@media (max-width: 640px) {
+  .cabinet-stage-page__title h1 {
+    font-size: var(--type-h2-font-size);
+    line-height: var(--type-h2-line-height);
+  }
+}

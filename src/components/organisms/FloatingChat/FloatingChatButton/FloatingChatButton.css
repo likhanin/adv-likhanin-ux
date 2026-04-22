@@ -1,0 +1,59 @@
+.floating-chat-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+  height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--color-text-primary);
+  box-shadow:
+    0 0 0 1px rgba(17, 19, 24, 0.03),
+    0 24px 60px rgba(0, 0, 0, 0.2),
+    0 10px 24px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.floating-chat-button__main {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.floating-chat-button__label {
+  color: var(--color-text-primary);
+  font-size: var(--type-h4-font-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--type-h4-line-height);
+}
+
+.floating-chat-button__badge {
+  flex: 0 0 auto;
+}
+
+.floating-chat-button__icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-text-primary);
+}
+
+.floating-chat-button__icon svg {
+  stroke-width: 2.2;
+}
+
+.floating-chat-button:hover {
+  transform: translateY(-1px);
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(17, 19, 24, 0.03),
+    0 28px 68px rgba(0, 0, 0, 0.22),
+    0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 640px) {
+  .floating-chat-button {
+    width: min(250px, 100%);
+  }
+}

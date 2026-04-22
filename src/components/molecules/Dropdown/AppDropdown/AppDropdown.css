@@ -1,0 +1,12 @@
+.app-dropdown__trigger {
+  appearance: none;
+}
+
+.app-dropdown__trigger-main {
+  display: inline-flex;
+  align-items: center;
+}
+
+.app-dropdown__panel {
+  position: absolute;
+}

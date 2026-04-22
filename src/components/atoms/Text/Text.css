@@ -1,0 +1,18 @@
+.text {
+  margin: 0;
+  font-family: var(--font-sans);
+  letter-spacing: var(--font-letter-spacing-base);
+}
+
+.text--default {
+  color: inherit;
+}
+
+.text--soft {
+  color: var(--color-text-secondary);
+}
+
+.text--strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-extrabold);
+}

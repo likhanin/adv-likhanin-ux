@@ -1,0 +1,32 @@
+.postpay-debt-summary {
+  display: grid;
+  gap: 16px;
+  padding: 42px 18px 16px;
+  border-radius: 24px;
+  background: #ffecc9;
+}
+
+.postpay-debt-summary__body {
+  display: grid;
+  gap: 4px;
+}
+
+.postpay-debt-summary__body h3 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--type-m20-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-m20-line-height);
+}
+
+.postpay-debt-summary__body p {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--type-xs10-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-xs10-line-height);
+}
+
+:root[data-theme='dark'] .postpay-debt-summary {
+  background: #4b3f24;
+}

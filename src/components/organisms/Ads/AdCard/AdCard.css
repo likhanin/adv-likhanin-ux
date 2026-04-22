@@ -1,0 +1,63 @@
+.ad-card-organism {
+  display: grid;
+  grid-template-columns: 154px minmax(0, 1fr) 280px;
+  gap: 20px;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-soft);
+}
+
+.ad-card-organism__main,
+.ad-card-organism__side {
+  display: grid;
+  align-content: start;
+}
+
+.ad-card-organism__main {
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.ad-card-organism__main h3 {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: var(--type-h3-font-size);
+  line-height: var(--type-h3-line-height);
+}
+
+.ad-card-organism__side {
+  gap: 10px;
+  justify-items: start;
+  padding-top: 4px;
+}
+
+.ad-card-organism__chat::before {
+  content: '◌';
+  margin-right: 6px;
+}
+
+@media (max-width: 920px) {
+  .ad-card-organism {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+
+  .ad-card-organism__side {
+    grid-column: 1 / -1;
+    padding-left: 140px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ad-card-organism {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ad-card-organism__side {
+    grid-column: auto;
+    padding-left: 0;
+  }
+}

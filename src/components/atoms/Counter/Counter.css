@@ -1,0 +1,22 @@
+.counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #ff4a63;
+  color: #fff;
+  font-size: var(--type-xs10-font-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--type-xs10-line-height);
+  text-align: center;
+}
+
+.counter--xs {
+  width: 15px;
+  height: 15px;
+}
+
+.counter--s {
+  width: 19px;
+  height: 19px;
+}

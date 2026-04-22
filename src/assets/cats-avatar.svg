@@ -1,0 +1,71 @@
+<svg width="640" height="640" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="avatarClip">
+      <circle cx="320" cy="320" r="320" />
+    </clipPath>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#8B6A45" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <g clip-path="url(#avatarClip)">
+    <rect width="640" height="640" fill="#EED4AE" />
+    <ellipse cx="374" cy="364" rx="228" ry="238" fill="#F8E8CF" />
+
+    <path d="M222 170L286 58L322 192L222 170Z" fill="#181512" />
+    <path d="M424 192L458 56L522 168L424 192Z" fill="#181512" />
+    <path d="M228 170L286 70L314 180L228 170Z" fill="#231E1A" />
+    <path d="M430 182L454 72L514 168L430 182Z" fill="#231E1A" />
+
+    <path
+      d="M183 307C183 206 254 128 356 128C456 128 533 203 533 309C533 409 455 484 356 484C258 484 183 411 183 307Z"
+      fill="#111111"
+    />
+    <path
+      d="M278 164C321 148 393 148 437 168L430 463C401 481 310 485 279 462L278 164Z"
+      fill="#F5EDD8"
+    />
+    <path
+      d="M323 228C353 210 383 221 394 257C401 281 397 320 381 349C365 378 333 393 307 383C277 370 259 334 260 296C261 265 281 240 323 228Z"
+      fill="#121212"
+    />
+
+    <ellipse cx="292" cy="283" rx="44" ry="51" fill="#1A1816" />
+    <ellipse cx="424" cy="283" rx="44" ry="51" fill="#1A1816" />
+    <ellipse cx="294" cy="284" rx="24" ry="29" fill="#B6AE66" />
+    <ellipse cx="423" cy="284" rx="24" ry="29" fill="#B6AE66" />
+    <ellipse cx="297" cy="285" rx="11" ry="13" fill="#181716" />
+    <ellipse cx="421" cy="285" rx="11" ry="13" fill="#181716" />
+    <circle cx="302" cy="278" r="4" fill="#F7F5E9" />
+    <circle cx="426" cy="278" r="4" fill="#F7F5E9" />
+
+    <ellipse cx="288" cy="385" rx="56" ry="46" fill="#F5EDD8" />
+    <ellipse cx="405" cy="391" rx="58" ry="49" fill="#F5EDD8" />
+    <path d="M311 367L359 341L392 371L355 432L311 367Z" fill="#151311" />
+    <path d="M351 432C329 432 312 418 309 397C321 403 334 406 350 406C367 406 380 403 392 397C389 418 373 432 351 432Z" fill="#F4E9D2" />
+
+    <path d="M259 350L171 337" stroke="#D4C8B0" stroke-width="6" stroke-linecap="round" />
+    <path d="M256 372L153 372" stroke="#D4C8B0" stroke-width="6" stroke-linecap="round" />
+    <path d="M262 394L171 409" stroke="#D4C8B0" stroke-width="6" stroke-linecap="round" />
+    <path d="M449 350L539 334" stroke="#D4C8B0" stroke-width="6" stroke-linecap="round" />
+    <path d="M453 372L557 368" stroke="#D4C8B0" stroke-width="6" stroke-linecap="round" />
+    <path d="M444 395L531 408" stroke="#D4C8B0" stroke-width="6" stroke-linecap="round" />
+
+    <g filter="url(#softShadow)">
+      <ellipse cx="184" cy="446" rx="123" ry="127" fill="#C87E46" />
+      <path d="M95 396L121 328L167 386L95 396Z" fill="#CC8853" />
+      <path d="M213 389L251 330L261 396L213 389Z" fill="#C27D48" />
+      <ellipse cx="184" cy="446" rx="100" ry="104" fill="#D5945B" />
+      <ellipse cx="147" cy="439" rx="18" ry="24" fill="#9DB4A8" />
+      <ellipse cx="218" cy="444" rx="18" ry="24" fill="#9DB4A8" />
+      <ellipse cx="147" cy="439" rx="10" ry="13" fill="#232323" />
+      <ellipse cx="218" cy="444" rx="10" ry="13" fill="#232323" />
+      <path d="M183 462L196 483H171L183 462Z" fill="#B8664C" />
+      <path d="M126 477L82 494" stroke="#F4DEC9" stroke-width="5" stroke-linecap="round" />
+      <path d="M127 498L75 515" stroke="#F4DEC9" stroke-width="5" stroke-linecap="round" />
+      <path d="M237 482L286 492" stroke="#F4DEC9" stroke-width="5" stroke-linecap="round" />
+      <path d="M236 503L289 511" stroke="#F4DEC9" stroke-width="5" stroke-linecap="round" />
+      <path d="M115 387C143 369 216 364 249 387" stroke="#E8B27E" stroke-width="7" stroke-linecap="round" />
+    </g>
+  </g>
+</svg>

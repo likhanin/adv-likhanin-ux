@@ -1,0 +1,9 @@
+.status-label {
+  margin: 0;
+  color: var(--color-ink);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.status-label--warning {
+  color: #ff9500;
+}

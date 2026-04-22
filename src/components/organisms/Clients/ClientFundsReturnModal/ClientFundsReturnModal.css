@@ -1,0 +1,31 @@
+.client-funds-return-modal {
+  display: grid;
+  width: 390px;
+  max-width: 100%;
+  gap: 28px;
+}
+
+.client-funds-return-modal__description {
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.client-funds-return-modal__actions {
+  display: grid;
+  gap: 12px;
+}
+
+.client-funds-return-modal__action {
+  width: 390px;
+  max-width: 100%;
+}
+
+@media (max-width: 920px) {
+  .client-funds-return-modal {
+    gap: 20px;
+  }
+
+  .client-funds-return-modal__action {
+    width: 100%;
+  }
+}

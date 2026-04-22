@@ -1,0 +1,23 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-size: var(--type-xs10-font-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--type-xs10-line-height);
+  color: #fff;
+  background: #ff4a63;
+}
+
+.badge--small {
+  min-width: 15px;
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  font-size: var(--type-xs10-font-size);
+  line-height: var(--type-xs10-line-height);
+}

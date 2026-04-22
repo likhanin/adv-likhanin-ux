@@ -1,0 +1,187 @@
+.redesign-sidebar {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.redesign-sidebar__top {
+  display: grid;
+  gap: 24px;
+}
+
+.redesign-sidebar__brand {
+  display: flex;
+  align-items: center;
+}
+
+.redesign-sidebar__brand-logo {
+  display: block;
+  width: 212px;
+  height: auto;
+}
+
+.redesign-sidebar__role-switcher {
+  position: relative;
+  width: 213px;
+  height: 44px;
+}
+
+.redesign-sidebar__role-button {
+  width: 100%;
+  height: 44px;
+  border: 0;
+  border-radius: 18px;
+  background: #fff;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #000;
+  font-family: var(--font-sans);
+  font-size: var(--type-m20-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-m20-line-height);
+  cursor: pointer;
+}
+
+.redesign-sidebar__role-caret {
+  transition: transform 180ms ease;
+}
+
+.redesign-sidebar__role-caret--open {
+  transform: rotate(180deg);
+}
+
+.redesign-sidebar__role-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: grid;
+  gap: 6px;
+  border-radius: 18px;
+  background: #fff;
+  padding: 8px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.redesign-sidebar__role-option {
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  padding: 12px 14px;
+  text-align: left;
+  color: #000;
+  font-family: var(--font-sans);
+  font-size: var(--type-m20-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-m20-line-height);
+  cursor: pointer;
+}
+
+.redesign-sidebar__role-option--active {
+  background: #f2f1f0;
+}
+
+.redesign-sidebar__groups {
+  display: grid;
+  gap: 30px;
+}
+
+.redesign-sidebar__group {
+  display: grid;
+  gap: 14px;
+}
+
+.redesign-sidebar__nav {
+  display: grid;
+  gap: 0;
+}
+
+.redesign-sidebar__nav-item {
+  box-sizing: border-box;
+  width: 213px;
+  height: 38px;
+  border-radius: 20px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #000;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.redesign-sidebar__nav-item--active {
+  background: #fff;
+}
+
+.redesign-sidebar__user-card {
+  position: sticky;
+  bottom: 16px;
+  margin-top: auto;
+  box-sizing: border-box;
+  width: 213px;
+  height: 60px;
+  border-radius: 30px;
+  background: #fff;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.redesign-sidebar__user-avatar {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+}
+
+.redesign-sidebar__user-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.redesign-sidebar__user-name {
+  color: #000;
+}
+
+.redesign-sidebar__user-balance {
+  color: #757575;
+}
+
+[data-theme='dark'] .redesign-sidebar__role-button,
+[data-theme='dark'] .redesign-sidebar__role-option,
+[data-theme='dark'] .redesign-sidebar__nav-item,
+[data-theme='dark'] .redesign-sidebar__user-name {
+  color: #fff;
+}
+
+[data-theme='dark'] .redesign-sidebar__user-balance {
+  color: #757575;
+}
+
+[data-theme='dark'] .redesign-sidebar__role-button,
+[data-theme='dark'] .redesign-sidebar__role-menu,
+[data-theme='dark'] .redesign-sidebar__nav-item--active,
+[data-theme='dark'] .redesign-sidebar__user-card {
+  background: #141414;
+}
+
+[data-theme='dark'] .redesign-sidebar__role-option--active {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 1023px) {
+  .redesign-sidebar {
+    position: static;
+    min-height: auto;
+  }
+}

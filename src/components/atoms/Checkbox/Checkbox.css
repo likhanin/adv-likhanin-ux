@@ -1,0 +1,13 @@
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-ink);
+  font-weight: var(--font-weight-medium);
+}
+
+.checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-accent);
+}

@@ -1,0 +1,35 @@
+.feature-promo-card {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px 14px 14px;
+  margin-bottom: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 26px;
+  background: linear-gradient(90deg, rgba(246, 248, 252, 0.96), rgba(255, 255, 255, 0.98));
+  box-shadow: var(--shadow-soft);
+}
+
+.feature-promo-card__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: var(--type-h1-font-size);
+  font-weight: var(--font-weight-extrabold);
+  color: #15834d;
+  background: linear-gradient(180deg, #b7ffc7, #8ee88c);
+}
+
+.feature-promo-card__body h3 {
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.feature-promo-card__badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}

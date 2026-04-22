@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import './styles/typography.css';
+
+:root {
+  --color-bg: #fff;
+  --color-bg-accent: #f1f6ff;
+  --color-bg-default: #f2f1f0;
+  --color-bg-warning: #ffecc9;
+  --color-card: #f4f4f6;
+  --color-border: rgba(18, 24, 38, 0.08);
+  --color-ink: #000;
+  --color-ink-soft: #757575;
+  --color-text-primary: #000;
+  --color-text-secondary: #757575;
+  --color-text-success: #00a34c;
+  --color-text-danger: #ff4053;
+  --color-text-error: #ff4053;
+  --color-warning: #fca400;
+  --color-text-inverse: #fff;
+  --color-accent: #1f6fff;
+  --shadow-soft: 0 16px 48px rgba(24, 34, 56, 0.06);
+  --shadow-button:
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    0 4px 24px rgba(0, 0, 0, 0.12);
+
+  color: var(--color-text-secondary);
+  background: #fff;
+  font: var(--font-weight-medium) var(--type-m20-font-size) / var(--type-m20-line-height) var(--font-sans);
+  letter-spacing: var(--font-letter-spacing-base);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #111318;
+  --color-bg-accent: #171b24;
+  --color-bg-default: #f2f1f0;
+  --color-bg-warning: #ffecc9;
+  --color-card: #1c1f26;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-ink: #fff;
+  --color-ink-soft: #757575;
+  --color-text-primary: #fff;
+  --color-text-secondary: #757575;
+  --color-text-success: #00a34c;
+  --color-text-danger: #ff4053;
+  --color-text-error: #ff4053;
+  --color-warning: #fca400;
+  --color-text-inverse: #000;
+  --color-accent: #5aa8ff;
+  --shadow-soft: 0 16px 48px rgba(0, 0, 0, 0.28);
+  --shadow-button:
+    0 1px 3px rgba(0, 0, 0, 0.25),
+    0 4px 24px rgba(0, 0, 0, 0.18);
+
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
+  color-scheme: dark;
+}
+
+:root[data-redesign='true'] {
+  --color-bg: #f5f5f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  letter-spacing: var(--font-letter-spacing-base);
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  font-family: var(--font-sans);
+  letter-spacing: var(--font-letter-spacing-base);
+}
+
+a,
+button {
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid rgba(31, 111, 255, 0.55);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+:root[data-theme='dark'] .cabinet-layout,
+:root[data-theme='dark'] .cabinet-layout__header,
+:root[data-theme='dark'] .cabinet-layout__main,
+:root[data-theme='dark'] .cabinet-layout__footer {
+  background: transparent;
+}
+
+:root[data-theme='dark'] .app-modal__panel,
+:root[data-theme='dark'] .app-drawer__panel,
+:root[data-theme='dark'] .feature-toggles-panel__item,
+:root[data-theme='dark'] .cabinet-section-page__card,
+:root[data-theme='dark'] .ad-card-organism,
+:root[data-theme='dark'] .promo-banner-organism,
+:root[data-theme='dark'] .feature-promo-card,
+:root[data-theme='dark'] .finance-page__date-picker-dropdown,
+:root[data-theme='dark'] .finance-page__modern-card-surface,
+:root[data-theme='dark'] .finance-page__modern-wallet-card,
+:root[data-theme='dark'] .floating-chat-button {
+  background: #171a20;
+  color: var(--color-text-primary);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme='dark'] .wallet-summary,
+:root[data-theme='dark'] .finance-page__modern-card,
+:root[data-theme='dark'] .finance-page__modern-wallet-shell,
+:root[data-theme='dark'] .finance-page__filter,
+:root[data-theme='dark'] .finance-page__modern-tabs,
+:root[data-theme='dark'] .finance-page__date-picker-preset,
+:root[data-theme='dark'] .finance-page__date-picker-meta,
+:root[data-theme='dark'] .finance-page__balance-card,
+:root[data-theme='dark'] .sidebar-nav-item--active,
+:root[data-theme='dark'] .feature-promo-card__icon {
+  background: #21252d;
+  color: var(--color-text-primary);
+}
+
+:root[data-theme='dark'] .finance-page__modern-postpay-card,
+:root[data-theme='dark'] .finance-page__date-picker-preset--active {
+  background: transparent;
+}
+
+:root[data-theme='dark'] .header-top-bar__action-link,
+:root[data-theme='dark'] .header-main-nav__link,
+:root[data-theme='dark'] .profile-summary__title,
+:root[data-theme='dark'] .profile-summary__rating,
+:root[data-theme='dark'] .wallet-summary strong,
+:root[data-theme='dark'] .sidebar-nav-item,
+:root[data-theme='dark'] .site-footer__links a,
+:root[data-theme='dark'] .site-footer__feature-link,
+:root[data-theme='dark'] .app-modal__title,
+:root[data-theme='dark'] .app-modal__subtitle,
+:root[data-theme='dark'] .app-drawer__header h2,
+:root[data-theme='dark'] .floating-chat-button__label,
+:root[data-theme='dark'] .floating-chat-button__icon,
+:root[data-theme='dark'] .finance-page__title h1,
+:root[data-theme='dark'] .cabinet-stage-page__title h1,
+:root[data-theme='dark'] .cabinet-section-page__title h1,
+:root[data-theme='dark'] .finance-page__modern-card h2,
+:root[data-theme='dark'] .finance-page__modern-wallet-card h2,
+:root[data-theme='dark'] .finance-page__modern-postpay-card h2,
+:root[data-theme='dark'] .finance-page__modern-amount,
+:root[data-theme='dark'] .finance-page__modern-note,
+:root[data-theme='dark'] .finance-page__modern-section-title,
+:root[data-theme='dark'] .finance-page__calendar-header h3,
+:root[data-theme='dark'] .finance-page__calendar-day,
+:root[data-theme='dark'] .finance-page__filter,
+:root[data-theme='dark'] .finance-page__date-picker-meta,
+:root[data-theme='dark'] .feature-toggles-panel__meta strong,
+:root[data-theme='dark'] .feature-toggles-panel__header button,
+:root[data-theme='dark'] .feature-toggles-panel__control span,
+:root[data-theme='dark'] .feature-toggles-panel__meta code,
+:root[data-theme='dark'] .ad-card-organism__main h3,
+:root[data-theme='dark'] .ad-meta-block__price,
+:root[data-theme='dark'] .ads-tabs__tab--active,
+:root[data-theme='dark'] .toolbar-filter {
+  color: var(--color-text-primary);
+}
+
+:root[data-theme='dark'] .header-top-bar__link,
+:root[data-theme='dark'] .site-footer,
+:root[data-theme='dark'] .site-footer__legal,
+:root[data-theme='dark'] .feature-toggles-panel__header p,
+:root[data-theme='dark'] .ad-meta-block__meta,
+:root[data-theme='dark'] .ad-meta-block__location,
+:root[data-theme='dark'] .finance-page__modern-description,
+:root[data-theme='dark'] .finance-page__calendar-weekdays span,
+:root[data-theme='dark'] .finance-page__calendar-header h3 span:last-child,
+:root[data-theme='dark'] .finance-page__date-picker-preset,
+:root[data-theme='dark'] .finance-page__amount-tooltip,
+:root[data-theme='dark'] .finance-page__amount,
+:root[data-theme='dark'] .finance-page__table thead th,
+:root[data-theme='dark'] .finance-page__table tbody td,
+:root[data-theme='dark'] .finance-page__balance-label,
+:root[data-theme='dark'] .wallet-summary__label,
+:root[data-theme='dark'] .wallet-summary__note,
+:root[data-theme='dark'] .text--soft {
+  color: var(--color-text-secondary);
+}
+
+:root[data-theme='dark'] .header-top-bar__caret,
+:root[data-theme='dark'] .header-main-nav__caret,
+:root[data-theme='dark'] .icon--top,
+:root[data-theme='dark'] .finance-page__filter-icon,
+:root[data-theme='dark'] .finance-page__filter-chevron,
+:root[data-theme='dark'] .finance-page__date-picker-meta-icon,
+:root[data-theme='dark'] .sidebar-nav-item__caret,
+:root[data-theme='dark'] .app-modal__close,
+:root[data-theme='dark'] .app-drawer__close {
+  color: var(--color-text-secondary);
+}
+
+:root[data-theme='dark'] .sidebar-nav-item:hover,
+:root[data-theme='dark'] .finance-page__modern-tab--active,
+:root[data-theme='dark'] .feature-toggles-panel__item,
+:root[data-theme='dark'] .finance-page__date-picker-preset--active {
+  background: #2a2f38;
+}
+
+:root[data-theme='dark'] .promo-banner-organism,
+:root[data-theme='dark'] .feature-promo-card,
+:root[data-theme='dark'] .cabinet-section-page__card,
+:root[data-theme='dark'] .ad-card-organism,
+:root[data-theme='dark'] .finance-page__modern-card,
+:root[data-theme='dark'] .finance-page__balance-card,
+:root[data-theme='dark'] .feature-toggles-panel__item {
+  border-color: var(--color-border);
+}
+
+:root[data-theme='dark'] .finance-page__table thead th,
+:root[data-theme='dark'] .finance-page__table tbody td {
+  border-bottom-color: var(--color-border);
+}
+
+:root[data-theme='dark'] .finance-page__modern-progress {
+  background: #313641;
+}
+
+:root[data-theme='dark'] .finance-page__modern-progress--active {
+  background: #313641;
+}
+
+:root[data-theme='dark'] .finance-page__modern-progress span {
+  background: #4eb5ff;
+}
+
+:root[data-theme='dark'] .finance-page__calendar-day--in-range {
+  background: #2b313b;
+}
+
+:root[data-theme='dark'] .finance-page__calendar-day--range-start {
+  background:
+    radial-gradient(circle at center, var(--color-text-primary) 0 18px, transparent 19px),
+    linear-gradient(90deg, transparent 50%, #2b313b 50%);
+  color: var(--color-text-inverse);
+}
+
+:root[data-theme='dark'] .finance-page__calendar-day--range-end {
+  background:
+    radial-gradient(circle at center, var(--color-text-primary) 0 18px, transparent 19px),
+    linear-gradient(90deg, #2b313b 50%, transparent 50%);
+  color: var(--color-text-inverse);
+}

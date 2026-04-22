@@ -1,0 +1,67 @@
+.ad-preview {
+  position: relative;
+  overflow: hidden;
+  min-height: 118px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #ece7e1, #ddd7d0);
+}
+
+.ad-preview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.48) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: preview-sheen 4.2s ease-in-out infinite;
+}
+
+.ad-preview span {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.ad-preview span:nth-child(1) {
+  left: 64px;
+  top: 46px;
+}
+
+.ad-preview span:nth-child(2) {
+  left: 78px;
+  top: 46px;
+}
+
+.ad-preview span:nth-child(3) {
+  left: 70px;
+  top: 59px;
+}
+
+.ad-preview span:nth-child(4) {
+  left: 83px;
+  top: 62px;
+}
+
+.ad-preview--mint {
+  background: linear-gradient(135deg, #f1eee9, #ddd8d1);
+}
+
+.ad-preview--sand {
+  background: linear-gradient(135deg, #f2efeb, #ddd8d0);
+}
+
+.ad-preview--rose {
+  background: linear-gradient(135deg, #f4ebeb, #ded8d7);
+}
+
+.ad-preview--sky {
+  background: linear-gradient(135deg, #eff4f7, #dbe1e8);
+}
+
+@media (max-width: 640px) {
+  .ad-preview {
+    min-height: 180px;
+  }
+}

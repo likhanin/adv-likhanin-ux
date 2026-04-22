@@ -1,0 +1,39 @@
+.postpay-request-modal {
+  display: grid;
+  width: 390px;
+  max-width: 100%;
+  gap: 28px;
+}
+
+.postpay-request-modal__description {
+  color: var(--color-text-primary);
+  font-size: var(--type-l10-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-l10-line-height);
+}
+
+.postpay-request-modal__field-group {
+  width: 390px;
+  max-width: 100%;
+}
+
+.postpay-request-modal__submit {
+  width: 390px;
+  max-width: 100%;
+}
+
+@media (max-width: 920px) {
+  .postpay-request-modal {
+    gap: 20px;
+  }
+
+  .postpay-request-modal__description {
+    font-size: var(--type-h5-font-size);
+    line-height: var(--type-l20-line-height);
+  }
+
+  .postpay-request-modal__field-group,
+  .postpay-request-modal__submit {
+    width: 100%;
+  }
+}

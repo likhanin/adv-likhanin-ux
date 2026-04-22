@@ -1,0 +1,100 @@
+.knowledge-base-panel__section {
+  display: grid;
+  gap: 16px;
+}
+
+.knowledge-base-panel__paragraphs {
+  display: grid;
+  gap: 12px;
+}
+
+.knowledge-base-panel__paragraph {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--type-m10-font-size);
+  line-height: var(--type-m10-line-height);
+}
+
+.knowledge-base-panel__section-title {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--type-h4-font-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--type-h4-line-height);
+}
+
+.knowledge-base-panel__bullet-list,
+.knowledge-base-panel__step-list {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 0 -22px;
+  padding: 0;
+  color: var(--color-text-primary);
+  font-size: var(--type-m10-font-size);
+  line-height: var(--type-m10-line-height);
+  list-style: none;
+}
+
+.knowledge-base-panel__bullet-list li,
+.knowledge-base-panel__step-list li {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: start;
+}
+
+.knowledge-base-panel__list-marker,
+.knowledge-base-panel__list-text {
+  font-size: var(--type-m10-font-size);
+  line-height: var(--type-m10-line-height);
+}
+
+.knowledge-base-panel__list-marker {
+  padding-right: 6px;
+  color: currentColor;
+}
+
+.knowledge-base-panel__permissions {
+  display: grid;
+  gap: 16px;
+}
+
+.knowledge-base-panel__permission h4,
+.knowledge-base-panel__permission p {
+  margin: 0;
+}
+
+.knowledge-base-panel__permission h4 {
+  color: var(--color-text-primary);
+  font-size: var(--type-m10-font-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--type-m10-line-height);
+}
+
+.knowledge-base-panel__permission p {
+  margin-top: 6px;
+  color: var(--color-text-primary);
+  font-size: var(--type-m10-font-size);
+  line-height: var(--type-m10-line-height);
+}
+
+.knowledge-base-panel__cta {
+  justify-self: start;
+  margin-top: 4px;
+}
+
+@media (max-width: 720px) {
+  .knowledge-base-panel__cta {
+    justify-self: stretch;
+  }
+
+  .knowledge-base-panel__bullet-list,
+  .knowledge-base-panel__step-list {
+    margin-left: 0;
+  }
+
+  .knowledge-base-panel__bullet-list li,
+  .knowledge-base-panel__step-list li {
+    grid-template-columns: 16px minmax(0, 1fr);
+    column-gap: 6px;
+  }
+}

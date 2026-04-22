@@ -1,0 +1,77 @@
+.floating-support-dock {
+  position: fixed;
+  right: 32px;
+  bottom: max(0px, env(safe-area-inset-bottom));
+  z-index: 20;
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+}
+
+.floating-support-dock__help {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 0;
+  border-radius: 24px;
+  background: #000;
+  color: #fff;
+  box-shadow:
+    0 0 0 1px rgba(17, 19, 24, 0.03),
+    0 24px 60px rgba(0, 0, 0, 0.2),
+    0 10px 24px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.floating-support-dock__help-icon-shell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.floating-support-dock__help-icon {
+  width: 10px;
+  height: 10px;
+  color: #000;
+}
+
+.floating-support-dock__help-image {
+  display: block;
+  width: 54px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.floating-support-dock__help:hover {
+  transform: translateY(-1px);
+}
+
+:root[data-redesign='true'] .floating-support-dock__help {
+  margin-bottom: 16px;
+}
+
+:root[data-theme='dark'] .floating-support-dock__help {
+  background: #fff;
+  color: #000;
+}
+
+:root[data-theme='dark'] .floating-support-dock__help-icon-shell {
+  background: #000;
+}
+
+:root[data-theme='dark'] .floating-support-dock__help-icon {
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .floating-support-dock {
+    right: 12px;
+    left: 12px;
+  }
+}

@@ -1,0 +1,35 @@
+.cabinet-section-page__title {
+  margin: 22px 0 18px;
+}
+
+.cabinet-section-page__title h1 {
+  margin: 0;
+  color: #000;
+  font-size: var(--type-h1-font-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--type-h1-line-height);
+}
+
+.cabinet-section-page__card {
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-soft);
+}
+
+.cabinet-section-page__card h2 {
+  margin: 0 0 10px;
+  color: var(--color-ink);
+}
+
+.cabinet-section-page__card p {
+  color: var(--color-ink-soft);
+}
+
+@media (max-width: 640px) {
+  .cabinet-section-page__title h1 {
+    font-size: var(--type-h2-font-size);
+    line-height: var(--type-h2-line-height);
+  }
+}

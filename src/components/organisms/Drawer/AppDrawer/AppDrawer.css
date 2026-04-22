@@ -1,0 +1,117 @@
+.app-drawer {
+  --app-drawer-panel-width: max(720px, min(1200px, calc(100vw - 386px)));
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: block;
+  pointer-events: none;
+}
+
+.app-drawer__overlay {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(17, 19, 24, 0.36);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 450ms ease-in-out;
+}
+
+.app-drawer__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--app-drawer-panel-width);
+  min-width: 720px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -12px 0 32px rgba(17, 19, 24, 0.08);
+  overflow: hidden;
+  transform: translateX(100%);
+  will-change: transform;
+  transition: transform 450ms ease-in-out;
+}
+
+.app-drawer--open {
+  pointer-events: auto;
+}
+
+.app-drawer--open .app-drawer__overlay {
+  opacity: 1;
+}
+
+.app-drawer--open .app-drawer__panel {
+  transform: translateX(0);
+}
+
+.app-drawer__close {
+  position: absolute;
+  top: 16px;
+  right: calc(var(--app-drawer-panel-width) + 16px);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.app-drawer__close svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+.app-drawer__title {
+  margin: 0;
+  padding-left: 12px;
+  color: var(--color-text-primary);
+  font-size: var(--type-h1-font-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--type-h1-line-height);
+}
+
+.app-drawer__content {
+  display: grid;
+  align-content: start;
+  gap: 0;
+  height: 100%;
+  padding: 40px 40px 40px 64px;
+  overflow: auto;
+}
+
+.app-drawer__header {
+  padding-right: 48px;
+}
+
+.app-drawer__body {
+  min-height: 0;
+}
+
+@media (max-width: 920px) {
+  .app-drawer {
+    --app-drawer-panel-width: min(100vw, 100%);
+  }
+
+  .app-drawer__panel {
+    min-width: 0;
+  }
+
+  .app-drawer__close {
+    right: 16px;
+  }
+
+  .app-drawer__header {
+    padding-right: 48px;
+  }
+
+  .app-drawer__content {
+    gap: 0;
+    padding: 56px 24px 24px;
+  }
+}

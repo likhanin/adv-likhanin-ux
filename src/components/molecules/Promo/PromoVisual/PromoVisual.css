@@ -1,0 +1,41 @@
+.promo-visual {
+  position: relative;
+  width: 102px;
+  height: 56px;
+}
+
+.promo-visual__shirt,
+.promo-visual__check {
+  position: absolute;
+}
+
+.promo-visual__shirt {
+  left: 0;
+  bottom: 2px;
+  width: 88px;
+  height: 44px;
+  border-radius: 16px 16px 22px 22px;
+  background:
+    linear-gradient(135deg, #ffd4dc, #f6f1ff 58%, #d2f2ff),
+    linear-gradient(#fff, #fff);
+  clip-path: polygon(10% 14%, 26% 0, 40% 0, 50% 12%, 60% 0, 74% 0, 90% 14%, 100% 36%, 82% 44%, 82% 100%, 18% 100%, 18% 44%, 0 36%);
+}
+
+.promo-visual__check {
+  right: 0;
+  bottom: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px 12px 12px 4px;
+  background: linear-gradient(180deg, #d7f5ff, #b5e0ff);
+}
+
+.promo-visual__check::before {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-weight: var(--font-weight-extrabold);
+  color: #1274b4;
+}

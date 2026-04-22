@@ -1,0 +1,5 @@
+.stat-item {
+  color: var(--color-ink-soft);
+  font-size: var(--type-m20-font-size);
+  line-height: var(--type-m20-line-height);
+}

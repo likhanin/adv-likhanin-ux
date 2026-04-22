@@ -1,0 +1,26 @@
+.ad-meta-block {
+  display: grid;
+  gap: 8px;
+}
+
+.ad-meta-block__price {
+  color: var(--color-ink);
+  font-size: var(--type-h5-font-size);
+  line-height: var(--type-h5-line-height);
+}
+
+.ad-meta-block__meta,
+.ad-meta-block__location {
+  color: var(--color-ink-soft);
+}
+
+.ad-meta-block__location::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #2891ff, #135de6);
+  vertical-align: 1px;
+}

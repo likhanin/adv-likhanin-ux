@@ -1,0 +1,33 @@
+.promo-banner-organism {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 26px;
+  background: linear-gradient(90deg, rgba(246, 248, 252, 0.96), rgba(255, 255, 255, 0.98));
+  box-shadow: var(--shadow-soft);
+}
+
+.promo-banner-organism__copy {
+  display: grid;
+  gap: 4px;
+  margin-right: auto;
+}
+
+.promo-banner-organism__copy strong {
+  color: var(--color-ink);
+  font-size: var(--type-h25-font-size);
+  line-height: var(--type-h25-line-height);
+}
+
+@media (max-width: 920px) {
+  .promo-banner-organism {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .promo-banner-organism__copy {
+    margin-right: 0;
+  }
+}

@@ -1,0 +1,26 @@
+.ads-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(249, 250, 253, 0.95), rgba(255, 255, 255, 0.95));
+  box-shadow: var(--shadow-soft);
+}
+
+@media (max-width: 920px) {
+  .ads-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .ads-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
