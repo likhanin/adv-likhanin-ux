@@ -51,15 +51,32 @@
   margin-left: 12px;
 }
 
+.field-control__input-group {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .field-control__input,
 .field-control__select {
-  flex: 1 1 auto;
   min-width: 0;
   border: 0;
   background: transparent;
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   letter-spacing: var(--font-letter-spacing-base);
+}
+
+.field-control__input {
+  flex: 1 1 auto;
+}
+
+.field-control__input-group--with-postfix.field-control__input-group--filled .field-control__input {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: 100%;
+  field-sizing: content;
 }
 
 .field-control__input::placeholder {
@@ -76,6 +93,8 @@
 }
 
 .field-control__postfix {
+  flex: 0 0 auto;
+  margin-left: 6px;
   color: var(--color-text-primary);
   white-space: nowrap;
 }
@@ -90,11 +109,15 @@
   background: transparent;
   color: var(--color-text-primary);
   cursor: pointer;
+  margin-left: 12px;
 }
 
 .field-control__hint {
-  margin: 10px 0 0;
+  margin: 6px 0 0;
   color: var(--color-text-secondary);
+  font-size: var(--type-s10-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-s10-line-height);
 }
 
 .field-control--error .field-control__hint {

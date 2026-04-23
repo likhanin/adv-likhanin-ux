@@ -2,41 +2,12 @@ import { useEffect, useMemo, useState } from 'react'
 import { DEFAULT_FEATURE_TOGGLES } from './defaultFeatureToggles'
 import { FeatureTogglesContext } from './featureTogglesContext'
 
-function resolveFeatureToggles(featureToggles) {
-  return {
-    ...featureToggles,
-    financeNewContent:
-      !featureToggles.financeNewContentV2 &&
-      (featureToggles.redesignEnabled || featureToggles.financeNewContent),
-  }
-}
-
-function applyExclusiveFinanceContent(name, value, current) {
-  const next = {
-    ...current,
-    [name]: value,
-  }
-
-  if (name === 'financeNewContent' && value) {
-    next.financeNewContentV2 = false
-  }
-
-  if (name === 'financeNewContentV2' && value) {
-    next.financeNewContent = false
-  }
-
-  return next
-}
-
 export function FeatureTogglesProvider({ children, initialToggles = {} }) {
   const [rawFeatureToggles, setRawFeatureToggles] = useState({
     ...DEFAULT_FEATURE_TOGGLES,
     ...initialToggles,
   })
-  const featureToggles = useMemo(
-    () => resolveFeatureToggles(rawFeatureToggles),
-    [rawFeatureToggles],
-  )
+  const featureToggles = useMemo(() => rawFeatureToggles, [rawFeatureToggles])
 
   useEffect(() => {
     const root = document.documentElement
@@ -55,12 +26,16 @@ export function FeatureTogglesProvider({ children, initialToggles = {} }) {
     () => ({
       featureToggles,
       setFeatureToggle(name, value) {
-        setRawFeatureToggles((current) => applyExclusiveFinanceContent(name, value, current))
+        setRawFeatureToggles((current) => ({
+          ...current,
+          [name]: value,
+        }))
       },
       toggleFeature(name) {
-        setRawFeatureToggles((current) =>
-          applyExclusiveFinanceContent(name, !current[name], current),
-        )
+        setRawFeatureToggles((current) => ({
+          ...current,
+          [name]: !current[name],
+        }))
       },
       resetFeatureToggles() {
         setRawFeatureToggles({

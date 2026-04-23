@@ -117,15 +117,12 @@ export function getAppCopy(locale = 'ru') {
         resetLabel: 'Reset',
         toggleLabel: 'Toggle',
         labels: {
-          financeNewContent: 'Finance with postpay 1',
           financeNewContentV2: 'Finance with postpay 2',
           darkTheme: 'Dark theme',
           englishLocale: 'English localization',
           redesignEnabled: 'Switch to redesign',
         },
         descriptions: {
-          financeNewContent:
-            'Enables postpay inside the wallet and adds the third account: postpay limit.',
           financeNewContentV2:
             'Enables postpay with a negative wallet balance and keeps postpay progress separate from the wallet.',
           darkTheme: 'Enables the black theme on the production design.',
@@ -161,6 +158,8 @@ export function getAppCopy(locale = 'ru') {
         rangeHint: (minAmount, maxAmount) => `${minAmount} ₽ to ${maxAmount} ₽`,
         rangeError: (minAmount, maxAmount) => `Enter an amount from ${minAmount} ₽ to ${maxAmount} ₽`,
       },
+        sidebarPostpayTitle: 'Postpay',
+        sidebarPostpayUsage: (used, total) => `Used ${used} of ${total} ₽`,
         sidebarDebtTitle: (amount) => `Debt ${amount}`,
         sidebarDebtDescription: 'Return it by April 15, 2026',
         sidebarDebtAction: 'Return',
@@ -331,15 +330,12 @@ export function getAppCopy(locale = 'ru') {
       resetLabel: 'Сбросить',
       toggleLabel: 'Переключить',
       labels: {
-        financeNewContent: 'Финансы с постоплатой 1',
         financeNewContentV2: 'Финансы с постоплатой 2',
         darkTheme: 'Черная тема',
         englishLocale: 'Локализация на английский',
         redesignEnabled: 'Переключиться на редизайн',
       },
       descriptions: {
-        financeNewContent:
-          'Включает постоплату внутри кошелька, добавляет третий счет — лимит постоплаты.',
         financeNewContentV2:
           'Включает постоплату с уходом в минус. Прогресс постоплаты отдельно от кошелька.',
         darkTheme: 'Включает черную тему на продовом дизайне.',
@@ -375,6 +371,8 @@ export function getAppCopy(locale = 'ru') {
         rangeHint: (minAmount, maxAmount) => `от ${minAmount} ₽ до ${maxAmount} ₽`,
         rangeError: (minAmount, maxAmount) => `Введите сумму от ${minAmount} ₽ до ${maxAmount} ₽`,
       },
+      sidebarPostpayTitle: 'Постоплата',
+      sidebarPostpayUsage: (used, total) => `Использовано ${used} из ${total} ₽`,
       sidebarDebtTitle: (amount) => `Задолженность ${amount}`,
       sidebarDebtDescription: 'Верните до 15 апреля 2026',
       sidebarDebtAction: 'Вернуть',

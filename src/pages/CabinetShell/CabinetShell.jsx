@@ -21,13 +21,14 @@ function formatCurrencyValue(value) {
   return `${formatAmountValue(value)} ₽`
 }
 
+const POSTPAY_LIMIT = 1500000
+
 export function CabinetShell({ content, sidebarWallet = null, sidebarPostpayDebt = null }) {
   const locale = useAppLocale()
   const appCopy = getAppCopy(locale)
-  const isFinanceNewContentEnabled = useFeatureToggle('financeNewContent')
   const isFinanceNewContentV2Enabled = useFeatureToggle('financeNewContentV2')
   const isRedesignEnabled = useFeatureToggle('redesignEnabled')
-  const { walletAmount, postpayReceivedAmount, returnPostpay } = useFinanceSession()
+  const { walletAmount } = useFinanceSession()
   const { openDrawer } = useDrawer()
   const {
     header: headerContent,
@@ -46,26 +47,23 @@ export function CabinetShell({ content, sidebarWallet = null, sidebarPostpayDebt
       )
     : sidebarContent.navigation
   const derivedSidebarWallet =
-    isFinanceNewContentEnabled || isFinanceNewContentV2Enabled
+    isFinanceNewContentV2Enabled
       ? {
           ...sidebarContent.wallet,
           amount: formatCurrencyValue(walletAmount),
         }
       : sidebarContent.wallet
+  const usedPostpayAmount = Math.min(Math.max(-walletAmount, 0), POSTPAY_LIMIT)
   const derivedSidebarPostpayDebt =
-    isFinanceNewContentV2Enabled && walletAmount < 0
+    isFinanceNewContentV2Enabled
       ? {
-          title: appCopy.finance.sidebarDebtTitle(formatCurrencyValue(Math.abs(walletAmount))),
-          description: appCopy.finance.sidebarDebtDescription,
-          actionLabel: appCopy.finance.sidebarDebtAction,
-          onAction: () => {},
-        }
-      : isFinanceNewContentEnabled && postpayReceivedAmount > 0
-      ? {
-          title: appCopy.finance.sidebarDebtTitle(formatCurrencyValue(postpayReceivedAmount)),
-          description: appCopy.finance.sidebarDebtDescription,
-          actionLabel: appCopy.finance.sidebarDebtAction,
-          onAction: returnPostpay,
+          title: appCopy.finance.sidebarPostpayTitle,
+          usageLabel: appCopy.finance.sidebarPostpayUsage(
+            formatAmountValue(usedPostpayAmount),
+            formatAmountValue(POSTPAY_LIMIT),
+          ),
+          dueLabel: appCopy.finance.sidebarDebtDescription,
+          progress: POSTPAY_LIMIT > 0 ? (usedPostpayAmount / POSTPAY_LIMIT) * 100 : 0,
         }
       : null
 

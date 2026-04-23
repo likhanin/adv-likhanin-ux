@@ -56,9 +56,9 @@ export function ProfileSidebar({ profile, wallet, postpayDebt = null }) {
           >
             <PostpayDebtSummary
               title={postpayDebt?.title ?? ''}
-              description={postpayDebt?.description ?? ''}
-              actionLabel={postpayDebt?.actionLabel ?? ''}
-              onAction={postpayDebt?.onAction}
+              usageLabel={postpayDebt?.usageLabel ?? ''}
+              dueLabel={postpayDebt?.dueLabel ?? ''}
+              progress={postpayDebt?.progress ?? 0}
             />
           </div>
         ) : null}

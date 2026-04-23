@@ -25,7 +25,7 @@ export function PostpayRequestModal({ defaultAmount = 0, minAmount = 200000, max
   const [isSubmitAttempted, setIsSubmitAttempted] = useState(false)
   const parsedAmount = parseAmountValue(amount)
   const hasOutOfRangeError = parsedAmount > 0 && (parsedAmount < minAmount || parsedAmount > maxAmount)
-  const isSubmitDisabled = parsedAmount < minAmount || parsedAmount > maxAmount
+  const hasAmountError = parsedAmount < minAmount || parsedAmount > maxAmount
   const errorText =
     isSubmitAttempted && hasOutOfRangeError
       ? appCopy.finance.postpayModal.rangeError(formatAmountValue(minAmount), formatAmountValue(maxAmount))
@@ -44,6 +44,7 @@ export function PostpayRequestModal({ defaultAmount = 0, minAmount = 200000, max
         className="postpay-request-modal__field-group"
         type="text"
         inputMode="numeric"
+        size="m"
         value={amount}
         label={appCopy.finance.postpayModal.amountLabel}
         hint={hintText}
@@ -62,14 +63,14 @@ export function PostpayRequestModal({ defaultAmount = 0, minAmount = 200000, max
       <Button
         className="postpay-request-modal__submit"
         type="button"
+        size="m"
         preset="default"
         priority="primary"
         fullWidth
-        disabled={isSubmitDisabled}
         onClick={() => {
           setIsSubmitAttempted(true)
 
-          if (isSubmitDisabled) {
+          if (hasAmountError) {
             return
           }
 

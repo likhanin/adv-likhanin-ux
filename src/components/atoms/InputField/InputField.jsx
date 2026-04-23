@@ -33,6 +33,7 @@ export function InputField({
   const fieldState = error ? 'error' : value ? 'filled' : 'default'
   const iconSize = getIconSize(size)
   const shouldShowHint = showHint || Boolean(error)
+  const shouldShowPostfix = showPostfix && Boolean(postfix)
 
   return (
     <div
@@ -59,24 +60,34 @@ export function InputField({
           </span>
         ) : null}
 
-        <input
-          {...props}
-          id={resolvedId}
-          className="field-control__input"
-          value={value}
-          placeholder={placeholder}
-          onChange={(event) => onChange?.(event.target.value)}
-        />
+        <div
+          className={[
+            'field-control__input-group',
+            shouldShowPostfix && 'field-control__input-group--with-postfix',
+            fieldState === 'filled' && 'field-control__input-group--filled',
+          ]
+            .filter(Boolean)
+            .join(' ')}
+        >
+          <input
+            {...props}
+            id={resolvedId}
+            className="field-control__input"
+            value={value}
+            placeholder={placeholder}
+            onChange={(event) => onChange?.(event.target.value)}
+          />
 
-        {showPostfix && postfix ? (
-          <span className="field-control__trail field-control__postfix" aria-hidden="true">
-            {postfix}
-          </span>
-        ) : null}
+          {shouldShowPostfix ? (
+            <span className="field-control__postfix" aria-hidden="true">
+              {postfix}
+            </span>
+          ) : null}
+        </div>
 
         {fieldState === 'filled' ? (
           <button
-            className="field-control__trail field-control__action"
+            className="field-control__action"
             type="button"
             aria-label={clearLabel}
             onClick={() => {

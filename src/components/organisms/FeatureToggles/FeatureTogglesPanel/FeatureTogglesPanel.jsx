@@ -22,7 +22,6 @@ export function FeatureTogglesPanel() {
       <div className="feature-toggles-panel__list">
         {toggleNames.map((name) => {
           const checked = Boolean(featureToggles[name])
-          const isLockedByRedesign = name === 'financeNewContent' && featureToggles.redesignEnabled
 
           return (
             <div key={name} className="feature-toggles-panel__item">
@@ -34,7 +33,6 @@ export function FeatureTogglesPanel() {
                 <span>{checked ? 'true' : 'false'}</span>
                 <ToggleSwitch
                   checked={checked}
-                  disabled={isLockedByRedesign}
                   label={`${appCopy.featureToggles.toggleLabel} ${name}`}
                   onChange={(value) => setFeatureToggle(name, value)}
                 />

@@ -18,7 +18,6 @@ function createDefaultFinanceSession({ isFinanceNewContentV2Enabled }) {
 }
 
 export function FinanceSessionProvider({ children }) {
-  const isFinanceNewContentEnabled = useFeatureToggle('financeNewContent')
   const isFinanceNewContentV2Enabled = useFeatureToggle('financeNewContentV2')
   const initialSession = useMemo(
     () => createDefaultFinanceSession({ isFinanceNewContentV2Enabled }),
@@ -27,13 +26,7 @@ export function FinanceSessionProvider({ children }) {
 
   return (
     <FinanceSessionStateProvider
-      key={
-        isFinanceNewContentV2Enabled
-          ? 'finance-v2-on'
-          : isFinanceNewContentEnabled
-            ? 'finance-on'
-            : 'finance-off'
-      }
+      key={isFinanceNewContentV2Enabled ? 'finance-v2-on' : 'finance-off'}
       initialSession={initialSession}
     >
       {children}

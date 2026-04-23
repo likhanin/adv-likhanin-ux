@@ -224,6 +224,7 @@ const CABINET_STAGE_CONTENT_RU = {
         amount: '25 000 ₽',
         note: SHARED_WALLET_RU.note,
         actionLabel: 'Оплатить',
+        topUpLabel: 'Пополнить',
       },
     },
     balances: [
@@ -516,6 +517,7 @@ const CABINET_STAGE_CONTENT_EN = {
         amount: '25 000 ₽',
         note: SHARED_WALLET_EN.note,
         actionLabel: 'Pay',
+        topUpLabel: 'Top up',
       },
     },
     balances: [

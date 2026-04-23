@@ -235,11 +235,9 @@ export function FinancePage() {
   const { finance } = getCabinetStageContent(locale)
   const { openModal } = useModal()
   const postpayTotalAmount = parseAmountValue(finance.newContent.postpayCard.amount)
-  const isFinanceNewContentEnabled = useFeatureToggle('financeNewContent')
   const isFinanceNewContentV2Enabled = useFeatureToggle('financeNewContentV2')
   const isRedesignEnabled = useFeatureToggle('redesignEnabled')
-  const isAnyFinanceNewContentEnabled =
-    isFinanceNewContentEnabled || isFinanceNewContentV2Enabled
+  const isAnyFinanceNewContentEnabled = isFinanceNewContentV2Enabled
   const {
     agencyBalance,
     walletAmount,
@@ -248,6 +246,7 @@ export function FinancePage() {
     requestPostpay,
     returnPostpay,
     transferFunds,
+    creditWallet,
   } = useFinanceSession()
   const clientNames = appCopy.finance.clientNames
   const [activeBalanceIndex, setActiveBalanceIndex] = useState(() => {
@@ -306,21 +305,17 @@ export function FinancePage() {
     returnPostpay()
   }
 
-  const handleAgencyTransferSubmit = (amount, selectedAccountId) => {
+  const handleAgencyTransferSubmit = (amount, selectedClient) => {
     transferFunds(amount)
 
     if (!isFinanceNewContentV2Enabled) {
       return
     }
 
-    const transferAccountLabels = {
-      lihanin: 'ИП Лиханин Максим Игоревич',
-      'avito-tech': 'ООО "АВИТО ТЕХ"',
-      'keh-ecommerce': 'ООО "КЕХ ЕКОММЕРЦ"',
-    }
-    const operationLabel = locale === 'en'
-      ? `Transfer to ${transferAccountLabels[selectedAccountId] ?? 'account'}`
-      : `Перевод на счет ${transferAccountLabels[selectedAccountId] ?? 'аккаунта'}`
+    const operationLabel =
+      locale === 'en'
+        ? `Transfer to ${selectedClient?.label ?? 'client'}`
+        : `Перевод клиенту ${selectedClient?.label ?? 'клиенту'}`
 
     setAgencyProcessingAmount((currentAmount) => currentAmount + amount)
     setTransactions((currentTransactions) => [
@@ -361,22 +356,54 @@ export function FinancePage() {
     })
   }
 
-  const handleWalletPaymentSubmit = (amount, selectedAccountId) => {
+  const handleWalletTopUpSubmit = (amount) => {
+    creditWallet(amount)
+
+    setTransactions((currentTransactions) => [
+      {
+        id: `wallet-top-up-${Date.now()}`,
+        date: formatTransactionDate(new Date()),
+        amountValue: amount,
+        type: 'deposit',
+        status: 'completed',
+        client: '—',
+        operation: locale === 'en' ? 'Wallet top up' : 'Пополнение кошелька',
+        bucket: 'wallet',
+      },
+      ...currentTransactions,
+    ])
+  }
+
+  const handleOpenWalletTopUpModal = () => {
+    openModal({
+      title: locale === 'en' ? 'Top up wallet' : 'Пополнить кошелек',
+      content: (
+        <TransferFundsModal
+          minAmount={5000}
+          maxAmount={100000000}
+          submitLabel={locale === 'en' ? 'Top up' : 'Пополнить'}
+          successLabel={locale === 'en' ? 'successfully credited' : 'успешно зачислены'}
+          closeLabel={locale === 'en' ? 'Back to cabinet' : 'Вернуться в кабинет'}
+          showAccountSelect={false}
+          showAmountHint={false}
+          onSubmit={handleWalletTopUpSubmit}
+        />
+      ),
+      size: 's',
+    })
+  }
+
+  const handleWalletPaymentSubmit = (amount, selectedClient) => {
     payFromWallet(amount)
 
     if (!isFinanceNewContentV2Enabled) {
       return
     }
 
-    const transferAccountLabels = {
-      lihanin: 'ИП Лиханин Максим Игоревич',
-      'avito-tech': 'ООО "АВИТО ТЕХ"',
-      'keh-ecommerce': 'ООО "КЕХ ЕКОММЕРЦ"',
-    }
     const operationLabel =
       locale === 'en'
-        ? `Payment to ${transferAccountLabels[selectedAccountId] ?? 'account'}`
-        : `Оплата на счет ${transferAccountLabels[selectedAccountId] ?? 'аккаунта'}`
+        ? `Payment for ${selectedClient?.label ?? 'client'}`
+        : `Оплата клиента ${selectedClient?.label ?? 'клиента'}`
 
     setTransactions((currentTransactions) => [
       {
@@ -867,23 +894,36 @@ export function FinancePage() {
           <Text as="p" variant="m20" className="finance-page__modern-summary-note-v2">
             {finance.newContentV2.walletCard.note}
           </Text>
-          <Button
-            type="button"
-            size="m"
-            preset="overlay"
-            priority="primary"
-            fullWidth
-            className="finance-page__modern-summary-action-v2"
-            onClick={handleOpenWalletPaymentModal}
-          >
-            {finance.newContentV2.walletCard.actionLabel}
-          </Button>
+          <div className="finance-page__modern-summary-actions-v2">
+            <Button
+              type="button"
+              size="m"
+              preset="overlay"
+              priority="primary"
+              fullWidth
+              className="finance-page__modern-summary-action-v2"
+              onClick={handleOpenWalletTopUpModal}
+            >
+              {finance.newContentV2.walletCard.topUpLabel}
+            </Button>
+            <Button
+              type="button"
+              size="m"
+              preset="overlay"
+              priority="primary"
+              fullWidth
+              className="finance-page__modern-summary-action-v2"
+              onClick={handleOpenWalletPaymentModal}
+            >
+              {finance.newContentV2.walletCard.actionLabel}
+            </Button>
+          </div>
         </article>
       </div>
     </section>
   )
 
-  const summarySection = isFinanceNewContentV2Enabled ? summarySectionV2 : summarySectionV1
+  const summarySection = summarySectionV2
 
   const operationsSection = (
     <section className="finance-page__modern-operations">

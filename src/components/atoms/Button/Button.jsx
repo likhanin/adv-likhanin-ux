@@ -8,8 +8,10 @@ export function Button({
   preset = 'default',
   fullWidth = false,
   className = '',
+  disabled = false,
   ...props
 }) {
+  const isDisabled = disabled === true
   const classes = [
     'button',
     `button--${variant}`,
@@ -23,7 +25,7 @@ export function Button({
     .join(' ')
 
   return (
-    <button className={classes} {...props}>
+    <button className={classes} disabled={isDisabled} {...props}>
       {children}
     </button>
   )
