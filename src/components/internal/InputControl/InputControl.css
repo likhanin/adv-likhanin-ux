@@ -63,7 +63,7 @@
 .input-control--has-prefix .input-control__input,
 .input-control--has-postfix .input-control__input {
   flex: 0 1 auto;
-  width: auto;
+  width: var(--input-control-input-width, auto);
   max-width: 100%;
   field-sizing: content;
 }
