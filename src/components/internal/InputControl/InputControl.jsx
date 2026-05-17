@@ -33,7 +33,7 @@ export function InputControl({
   const inputRef = useRef(null)
   const isFilled = value !== undefined ? String(value).length > 0 : String(defaultValue ?? '').length > 0
   const inputWidthSource = isFilled ? (value ?? defaultValue) : placeholder
-  const inputWidth = `${Math.max(String(inputWidthSource ?? '').length, 1)}ch`
+  const inputWidth = `${Math.max(String(inputWidthSource ?? '').length, 1) + 0.75}ch`
   const shouldShowClear = clearable && isFilled && !disabled && !readOnly
   const iconSize = getIconSize(size)
   const classes = [
