@@ -3,7 +3,11 @@
   overflow: hidden;
   min-height: 118px;
   border-radius: 22px;
-  background: linear-gradient(180deg, #ece7e1, #ddd7d0);
+  background: linear-gradient(
+    180deg,
+    var(--color-components-ad-preview-default-start),
+    var(--color-components-ad-preview-default-end)
+  );
 }
 
 .ad-preview::after {
@@ -11,7 +15,7 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.48) 50%, transparent 65%);
+    linear-gradient(120deg, transparent 35%, var(--color-components-ad-preview-sheen) 50%, transparent 65%);
   transform: translateX(-120%);
   animation: preview-sheen 4.2s ease-in-out infinite;
 }
@@ -21,7 +25,7 @@
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.74);
+  background: var(--color-components-ad-preview-dot);
 }
 
 .ad-preview span:nth-child(1) {
@@ -45,19 +49,35 @@
 }
 
 .ad-preview--mint {
-  background: linear-gradient(135deg, #f1eee9, #ddd8d1);
+  background: linear-gradient(
+    135deg,
+    var(--color-components-ad-preview-mint-start),
+    var(--color-components-ad-preview-mint-end)
+  );
 }
 
 .ad-preview--sand {
-  background: linear-gradient(135deg, #f2efeb, #ddd8d0);
+  background: linear-gradient(
+    135deg,
+    var(--color-components-ad-preview-sand-start),
+    var(--color-components-ad-preview-sand-end)
+  );
 }
 
 .ad-preview--rose {
-  background: linear-gradient(135deg, #f4ebeb, #ded8d7);
+  background: linear-gradient(
+    135deg,
+    var(--color-components-ad-preview-rose-start),
+    var(--color-components-ad-preview-rose-end)
+  );
 }
 
 .ad-preview--sky {
-  background: linear-gradient(135deg, #eff4f7, #dbe1e8);
+  background: linear-gradient(
+    135deg,
+    var(--color-components-ad-preview-sky-start),
+    var(--color-components-ad-preview-sky-end)
+  );
 }
 
 @media (max-width: 640px) {

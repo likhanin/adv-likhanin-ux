@@ -3,9 +3,9 @@
   grid-template-columns: 154px minmax(0, 1fr) 280px;
   gap: 20px;
   padding: 16px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 26px;
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--color-bg-elevation-1);
   box-shadow: var(--shadow-soft);
 }
 
@@ -22,7 +22,7 @@
 
 .ad-card-organism__main h3 {
   margin: 0;
-  color: var(--color-ink);
+  color: var(--color-text-primary);
   font-size: var(--type-h3-font-size);
   line-height: var(--type-h3-line-height);
 }

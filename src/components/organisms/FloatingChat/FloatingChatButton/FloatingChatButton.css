@@ -7,7 +7,7 @@
   padding: 0 16px;
   border: 0;
   border-radius: 8px;
-  background: #fff;
+  background: var(--color-bg-elevation-1);
   color: var(--color-text-primary);
   box-shadow:
     0 0 0 1px rgba(17, 19, 24, 0.03),
@@ -45,7 +45,7 @@
 
 .floating-chat-button:hover {
   transform: translateY(-1px);
-  background: #fff;
+  background: var(--color-bg-elevation-1);
   box-shadow:
     0 0 0 1px rgba(17, 19, 24, 0.03),
     0 28px 68px rgba(0, 0, 0, 0.22),

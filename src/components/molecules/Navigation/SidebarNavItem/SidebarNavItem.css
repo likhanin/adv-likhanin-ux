@@ -12,13 +12,30 @@
 
 .sidebar-nav-item:hover {
   color: var(--color-text-primary);
-  background: rgba(236, 235, 235, 0.56);
+  background: var(--color-bg-default);
 }
 
 .sidebar-nav-item--active {
   color: var(--color-text-primary);
-  background: #ecebeb;
+  background: var(--color-bg-default);
   box-shadow: none;
+}
+
+.sidebar-nav-item--disabled {
+  color: var(--color-text-secondary);
+  cursor: default;
+  opacity: 0.42;
+}
+
+.sidebar-nav-item--disabled:hover {
+  color: var(--color-text-secondary);
+  background: transparent;
+}
+
+:root[data-theme='dark'] .sidebar-nav-item--disabled,
+:root[data-theme='dark'] .sidebar-nav-item--disabled:hover {
+  color: var(--color-text-secondary);
+  background: transparent;
 }
 
 .sidebar-nav-item__main,

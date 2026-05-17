@@ -10,8 +10,7 @@
 
 ## Organisms
 
-- `organisms/Header/HeaderTopBar`: верхняя строка с сервисными ссылками и действиями пользователя.
-- `organisms/Header/HeaderMainNav`: логотип и главная навигация по категориям.
+- `organisms/Header/Header`: двухуровневая шапка с сервисными ссылками, действиями пользователя, логотипом и навигацией по категориям.
 - `organisms/Sidebar/ProfileSidebar`: левая колонка кабинета.
 - `organisms/Sidebar/SidebarNavigation`: меню разделов.
 - `organisms/Promo/PromoBanner`: верхний промо-баннер.
@@ -20,6 +19,7 @@
 - `organisms/Ads/AdsToolbar`: тулбар со множественным выбором и фильтром.
 - `organisms/Ads/AdsList`: контейнер списка объявлений.
 - `organisms/Ads/AdCard`: карточка объявления.
+- `organisms/Table/DesignSystemDataTable`: таблица данных из дизайн-системы.
 - `organisms/FloatingChat/FloatingChatButton`: плавающая кнопка сообщений.
 
 ## Molecules
@@ -38,13 +38,15 @@
 
 - `atoms/Button`: базовая кнопка.
 - `atoms/Icon`: базовая SVG-иконка.
-- `atoms/Badge`: маленький счетчик/маркер.
+- `atoms/Badge`: маленький счётчик/маркер.
 - `atoms/Avatar`: базовый аватар.
 - `atoms/Logo`: логотип бренда.
 - `atoms/Text`: типографический примитив.
 - `atoms/Checkbox`: базовый чекбокс.
 - `atoms/StatusLabel`: статус с цветовым тоном.
 - `atoms/StatItem`: одно числовое значение статистики.
+- `atoms/Tooltip`: подсказка дизайн-системы с размерами, inverse-темой, точкой-якорем и опциональным закрытием.
+- `styles/typography`: шкала Manrope из Figma с каноническими алиасами `H05`-`H70`.
 
 ## Notes
 

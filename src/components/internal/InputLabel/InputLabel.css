@@ -1,0 +1,39 @@
+.input-label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 0;
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--type-h50-font-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--type-h50-line-height);
+}
+
+.input-label--disabled {
+  color: var(--color-text-secondary);
+}
+
+.input-label__text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.input-label__required {
+  color: var(--color-text-error);
+}
+
+.input-label__optional {
+  color: var(--color-text-secondary);
+  font-size: var(--type-s10-font-size);
+  line-height: var(--type-s10-line-height);
+}
+
+.input--orientation-horizontal .input-label {
+  gap: 2px;
+  font-size: var(--type-m20-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-m20-line-height);
+}

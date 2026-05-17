@@ -5,7 +5,9 @@ import './SidebarMenuLabel.css'
 export function SidebarMenuLabel({ icon, label }) {
   return (
     <span className="sidebar-menu-label">
-      <Icon name={icon} variant="sidebar" className="sidebar-menu-label__icon" />
+      <span className="sidebar-menu-label__icon-slot">
+        <Icon name={icon} variant="sidebar" className="sidebar-menu-label__icon" />
+      </span>
       <Text as="span" variant="m20" className="sidebar-menu-label__text">
         {label}
       </Text>

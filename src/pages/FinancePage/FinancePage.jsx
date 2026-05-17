@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../../components/atoms/Button/Button'
 import { Icon } from '../../components/atoms/Icon/Icon'
+import { Tooltip } from '../../components/atoms/Tooltip/Tooltip'
 import { AppDropdown } from '../../components/molecules/Dropdown/AppDropdown/AppDropdown'
-import { AppDataTable } from '../../components/organisms/Table/AppDataTable/AppDataTable'
+import { DesignSystemDataTable } from '../../components/organisms/Table/DesignSystemDataTable/DesignSystemDataTable'
 import { RedesignContentShell } from '../../components/templates/RedesignContentShell/RedesignContentShell'
 import { getAppCopy, getLocaleTag, useAppLocale } from '../../i18n/useAppLocale'
 import { Text } from '../../components/atoms/Text/Text'
-import { PostpayRequestModal } from '../../components/organisms/Finance/PostpayRequestModal/PostpayRequestModal'
 import { TransferFundsModal } from '../../components/organisms/Finance/TransferFundsModal/TransferFundsModal'
 import { useFinanceSession } from '../../store/financeSession/useFinanceSession'
 import { useFeatureToggle } from '../../store/featureToggles/useFeatureToggles'
@@ -49,10 +49,6 @@ function formatTransactionDate(date) {
 
 function formatAmountValue(value) {
   return new Intl.NumberFormat('ru-RU').format(value).replace(/\u00A0/g, ' ')
-}
-
-function parseAmountValue(value) {
-  return Number(String(value).replace(/[^\d]/g, '')) || 0
 }
 
 function formatCurrencyValue(value) {
@@ -234,25 +230,14 @@ export function FinancePage() {
   const appCopy = getAppCopy(locale)
   const { finance } = getCabinetStageContent(locale)
   const { openModal } = useModal()
-  const postpayTotalAmount = parseAmountValue(finance.newContent.postpayCard.amount)
-  const isFinanceNewContentV2Enabled = useFeatureToggle('financeNewContentV2')
   const isRedesignEnabled = useFeatureToggle('redesignEnabled')
-  const isAnyFinanceNewContentEnabled = isFinanceNewContentV2Enabled
   const {
     agencyBalance,
     walletAmount,
-    postpayReceivedAmount,
     payFromWallet,
-    requestPostpay,
-    returnPostpay,
     transferFunds,
     creditWallet,
   } = useFinanceSession()
-  const clientNames = appCopy.finance.clientNames
-  const [activeBalanceIndex, setActiveBalanceIndex] = useState(() => {
-    const selectedIndex = finance.balances.findIndex((card) => card.selected)
-    return selectedIndex >= 0 ? selectedIndex : 0
-  })
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
   const [activePresetIndex, setActivePresetIndex] = useState(() => {
     const selectedIndex = finance.datePicker.presets.findIndex((preset) => preset.active)
@@ -282,18 +267,8 @@ export function FinancePage() {
     buildCalendarMonth(calendarEndMonth, selectedStartDate, selectedEndDate, 'next', localeTag),
   ]
 
-  const hasRequestedPostpay = postpayReceivedAmount > 0
-  const postpayRemainingAmount = Math.max(postpayTotalAmount - postpayReceivedAmount, 0)
-  const postpayProgress = postpayTotalAmount > 0 ? (postpayReceivedAmount / postpayTotalAmount) * 100 : 0
   const agencyAmountLabel = formatCurrencyValue(agencyBalance)
   const walletAmountLabel = formatCurrencyValue(walletAmount)
-  const postpayAmountLabel = formatCurrencyValue(hasRequestedPostpay ? postpayRemainingAmount : postpayTotalAmount)
-  const postpayNote = hasRequestedPostpay
-    ? appCopy.finance.postpayReceivedOfTotal(
-        formatAmountValue(postpayReceivedAmount),
-        formatAmountValue(postpayTotalAmount),
-      )
-    : finance.newContent.postpayCard.note
   const agencyCardNoteV2 =
     agencyProcessingAmount > 0
       ? `Из них в обработке ${formatCurrencyValue(agencyProcessingAmount)}`
@@ -301,21 +276,14 @@ export function FinancePage() {
   const walletPaymentMinAmount = 5000
   const walletPaymentMaxAmount = Math.max(walletAmount + 1500000, 0)
 
-  const handleReturnPostpay = () => {
-    returnPostpay()
-  }
-
   const handleAgencyTransferSubmit = (amount, selectedClient) => {
     transferFunds(amount)
-
-    if (!isFinanceNewContentV2Enabled) {
-      return
-    }
 
     const operationLabel =
       locale === 'en'
         ? `Transfer to ${selectedClient?.label ?? 'client'}`
         : `Перевод клиенту ${selectedClient?.label ?? 'клиенту'}`
+    const clientLabel = selectedClient?.label ?? '—'
 
     setAgencyProcessingAmount((currentAmount) => currentAmount + amount)
     setTransactions((currentTransactions) => [
@@ -325,7 +293,7 @@ export function FinancePage() {
         amountValue: amount,
         type: 'withdrawal',
         status: 'completed',
-        client: '—',
+        client: clientLabel,
         operation: operationLabel,
         bucket: 'agency',
       },
@@ -344,7 +312,7 @@ export function FinancePage() {
 
   const handleOpenTransferFundsModal = () => {
     openModal({
-      title: locale === 'en' ? 'Transfer funds' : 'Перевести средства',
+      title: locale === 'en' ? 'Transfer money' : 'Перевести деньги',
       content: (
         <TransferFundsModal
           minAmount={5000}
@@ -376,11 +344,12 @@ export function FinancePage() {
 
   const handleOpenWalletTopUpModal = () => {
     openModal({
-      title: locale === 'en' ? 'Top up wallet' : 'Пополнить кошелек',
+      title: locale === 'en' ? 'Top up wallet' : 'Пополнить кошелёк',
       content: (
         <TransferFundsModal
           minAmount={5000}
           maxAmount={100000000}
+          amountLabel={locale === 'en' ? 'Amount' : 'Сумма'}
           submitLabel={locale === 'en' ? 'Top up' : 'Пополнить'}
           successLabel={locale === 'en' ? 'successfully credited' : 'успешно зачислены'}
           closeLabel={locale === 'en' ? 'Back to cabinet' : 'Вернуться в кабинет'}
@@ -396,14 +365,11 @@ export function FinancePage() {
   const handleWalletPaymentSubmit = (amount, selectedClient) => {
     payFromWallet(amount)
 
-    if (!isFinanceNewContentV2Enabled) {
-      return
-    }
-
     const operationLabel =
       locale === 'en'
         ? `Payment for ${selectedClient?.label ?? 'client'}`
         : `Оплата клиента ${selectedClient?.label ?? 'клиента'}`
+    const clientLabel = selectedClient?.label ?? '—'
 
     setTransactions((currentTransactions) => [
       {
@@ -412,7 +378,7 @@ export function FinancePage() {
         amountValue: amount,
         type: 'withdrawal',
         status: 'completed',
-        client: '—',
+        client: clientLabel,
         operation: operationLabel,
         bucket: 'wallet',
       },
@@ -430,39 +396,17 @@ export function FinancePage() {
           submitLabel={locale === 'en' ? 'Pay' : 'Оплатить'}
           successLabel={locale === 'en' ? 'successfully paid' : 'успешно оплачены'}
           closeLabel={locale === 'en' ? 'Back to cabinet' : 'Вернуться в кабинет'}
+          postpayWarningBalance={walletAmount}
+          postpayWarningText={({ amountLabel, isFullAmount }) =>
+            isFullAmount
+              ? 'Вся сумма будет использована из постоплаты'
+              : `${amountLabel} будет использовано из постоплаты`
+          }
           onSubmit={handleWalletPaymentSubmit}
         />
       ),
       size: 's',
     })
-  }
-
-  const legacyBalances = finance.balances.map((card) =>
-    card.label === finance.newContent.walletCard.title
-      ? {
-          ...card,
-          amount: walletAmountLabel,
-          note: finance.newContent.walletCard.note,
-        }
-      : card,
-  )
-
-  const appendTransactions = (count) => {
-    const transactionTemplates = getTransactionTemplates(appCopy)
-    const failedTransactionTemplate = getFailedTransactionTemplate(appCopy)
-
-    setTransactions((currentTransactions) => {
-      return appendGeneratedTransactions(currentTransactions, {
-        count,
-        clientNames,
-        transactionTemplates,
-        failedTransactionTemplate,
-      })
-    })
-  }
-
-  const handleLoadMore = () => {
-    appendTransactions(5)
   }
 
   const filteredTransactions =
@@ -471,7 +415,7 @@ export function FinancePage() {
       : transactions.filter((transaction) => transaction.bucket === activeOperationTab)
 
   useEffect(() => {
-    if (!isAnyFinanceNewContentEnabled || !infiniteScrollSentinelRef.current) {
+    if (!infiniteScrollSentinelRef.current) {
       return undefined
     }
 
@@ -512,7 +456,6 @@ export function FinancePage() {
       observer.disconnect()
     }
   }, [
-    isAnyFinanceNewContentEnabled,
     activeOperationTab,
     locale,
   ])
@@ -526,11 +469,12 @@ export function FinancePage() {
   }, [])
 
   const renderTransactionsTable = (items) => (
-    <AppDataTable
+    <DesignSystemDataTable
       className="finance-page__table"
+      size="m"
       columns={[
         { key: 'date', label: finance.columns[0], width: '25%' },
-        { key: 'amount', label: finance.columns[1], width: '13%' },
+        { key: 'amount', label: finance.columns[1], width: '13%', align: 'right' },
         { key: 'client', label: finance.columns[2], width: '20%' },
         { key: 'operation', label: finance.columns[3], width: '42%' },
       ]}
@@ -544,7 +488,7 @@ export function FinancePage() {
           amount: (
             <span className={`finance-page__amount finance-page__amount--${amount.tone}`}>
               <span className="finance-page__amount-content">
-                <Text as="span" variant="s20">
+                <Text as="span" variant="m20">
                   {amount.label}
                 </Text>
                 {showFailedHint ? (
@@ -552,9 +496,9 @@ export function FinancePage() {
                     <span className="finance-page__amount-hint-icon" aria-hidden="true">
                       !
                     </span>
-                    <span className="finance-page__amount-tooltip" role="tooltip">
+                    <Tooltip className="finance-page__amount-tooltip" size="s" anchor="bottom">
                       {finance.failedAmountHint}
-                    </span>
+                    </Tooltip>
                   </span>
                 ) : null}
               </span>
@@ -680,213 +624,20 @@ export function FinancePage() {
     </div>
   )
 
-  const legacyContent = (
-    <>
-      <section className="finance-page__summary">
-        {legacyBalances.map((card, index) => {
-          const isActive = index === activeBalanceIndex
-
-          return (
-            <button
-              key={card.label}
-              type="button"
-              className={`finance-page__balance-card${isActive ? ' finance-page__balance-card--selected' : ' finance-page__balance-card--muted'}`}
-              aria-pressed={isActive}
-              onClick={() => setActiveBalanceIndex(index)}
-            >
-              <Text tone="soft" className="finance-page__balance-label">
-                {card.label}
-              </Text>
-              <strong className="finance-page__balance-amount">{card.amount}</strong>
-              <Text className="finance-page__balance-note">{card.note}</Text>
-              {isActive ? (
-                <span className="finance-page__balance-status" aria-hidden="true" />
-              ) : (
-                <span className="finance-page__balance-dot" aria-hidden="true" />
-              )}
-            </button>
-          )
-        })}
-      </section>
-
-      {renderDatePicker()}
-
-      {renderTransactionsTable(transactions)}
-
-      <div className="finance-page__load-more">
-        <Button type="button" size="m" preset="default" priority="secondary" onClick={handleLoadMore}>
-          {finance.loadMoreLabel}
-        </Button>
-      </div>
-    </>
-  )
-
-  const summarySectionV1 = (
-    <section className="finance-page__modern-summary">
-      <article className="finance-page__modern-card finance-page__modern-card--agency">
-        <div className="finance-page__modern-card-surface">
-          <h2>{finance.newContent.agencyCard.title}</h2>
-          <p className="finance-page__modern-description">{finance.newContent.agencyCard.description}</p>
-          <strong className="finance-page__modern-amount">{agencyAmountLabel}</strong>
-          <p className="finance-page__modern-note">{finance.newContent.agencyCard.note}</p>
-          <Button
-            type="button"
-            size="m"
-            preset="default"
-            priority="secondary"
-            fullWidth
-            className="finance-page__modern-action"
-            onClick={handleOpenTransferFundsModal}
-          >
-            {finance.newContent.agencyCard.actionLabel}
-          </Button>
-        </div>
-      </article>
-
-      <article className="finance-page__modern-wallet-shell">
-        <div className="finance-page__modern-wallet-card">
-          <h2>{finance.newContent.walletCard.title}</h2>
-          <p className="finance-page__modern-description">{finance.newContent.walletCard.description}</p>
-          <strong className="finance-page__modern-amount">{walletAmountLabel}</strong>
-          <p className="finance-page__modern-note">{finance.newContent.walletCard.note}</p>
-          <Button
-            type="button"
-            size="m"
-            preset="default"
-            priority="secondary"
-            fullWidth
-            className="finance-page__modern-action"
-          >
-            {finance.newContent.walletCard.actionLabel}
-          </Button>
-        </div>
-
-        <div className="finance-page__modern-postpay-card">
-          <h2>{finance.newContent.postpayCard.title}</h2>
-          <p className="finance-page__modern-description">{finance.newContent.postpayCard.description}</p>
-          <strong className="finance-page__modern-amount">{postpayAmountLabel}</strong>
-          <div className="finance-page__modern-progress-block">
-            <div
-              className={`finance-page__modern-progress${hasRequestedPostpay ? ' finance-page__modern-progress--active' : ''}`}
-              aria-hidden="true"
-            >
-              <span style={{ width: `${hasRequestedPostpay ? postpayProgress : finance.newContent.postpayCard.progress}%` }} />
-            </div>
-            <p className="finance-page__modern-note">{postpayNote}</p>
-          </div>
-          {hasRequestedPostpay ? (
-            <div className="finance-page__modern-postpay-actions">
-              <Button
-                type="button"
-                size="m"
-                preset="default"
-                priority="primary"
-                fullWidth
-                className="finance-page__modern-action"
-                onClick={handleReturnPostpay}
-              >
-                {finance.newContent.postpayCard.returnLabel}
-              </Button>
-              <Button
-                type="button"
-                size="m"
-                preset="overlay"
-                priority="secondary"
-                fullWidth
-                className="finance-page__modern-action"
-                onClick={() =>
-                  openModal({
-                    title: appCopy.finance.postpayRequestTitle,
-                    content: (
-                      <PostpayRequestModal
-                        defaultAmount={Math.min(
-                          finance.newContent.postpayCard.defaultRequestAmount,
-                          postpayRemainingAmount,
-                        )}
-                        minAmount={finance.newContent.postpayCard.minRequestAmount}
-                        maxAmount={postpayRemainingAmount}
-                        onSubmit={(requestedAmount) => {
-                          const normalizedAmount = Math.min(requestedAmount, postpayRemainingAmount)
-                          requestPostpay(normalizedAmount)
-                        }}
-                      />
-                    ),
-                    size: 's',
-                  })
-                }
-              >
-                {finance.newContent.postpayCard.requestMoreLabel}
-              </Button>
-            </div>
-          ) : (
-            <Button
-              type="button"
-              size="m"
-              preset="overlay"
-              priority="secondary"
-              fullWidth
-              className="finance-page__modern-action"
-              onClick={() =>
-                openModal({
-                  title: appCopy.finance.postpayRequestTitle,
-                  content: (
-                    <PostpayRequestModal
-                      defaultAmount={finance.newContent.postpayCard.defaultRequestAmount}
-                      minAmount={finance.newContent.postpayCard.minRequestAmount}
-                      maxAmount={postpayTotalAmount}
-                      onSubmit={(requestedAmount) => {
-                        const normalizedAmount = Math.min(requestedAmount, postpayTotalAmount)
-                        requestPostpay(normalizedAmount)
-                      }}
-                    />
-                  ),
-                  size: 's',
-                })
-              }
-            >
-              {finance.newContent.postpayCard.actionLabel}
-            </Button>
-          )}
-        </div>
-      </article>
-    </section>
-  )
-
-  const summarySectionV2 = (
+  const summarySection = (
     <section className="finance-page__modern-summary finance-page__modern-summary--v2">
       <div className="finance-page__modern-summary-cards-v2">
         <article className="finance-page__modern-summary-card-v2">
           <div className="finance-page__modern-summary-card-head-v2">
             <Text as="span" variant="m20">
-              {finance.newContentV2.agencyCard.title}
-            </Text>
-            <Icon name="infoCircle" variant="plain" className="finance-page__modern-summary-icon-v2" />
-          </div>
-          <Text as="strong" variant="h2" className="finance-page__modern-summary-amount-v2">
-            {agencyAmountLabel}
-          </Text>
-          <Text as="p" variant="m20" className="finance-page__modern-summary-note-v2">
-            {agencyCardNoteV2}
-          </Text>
-          <Button
-            type="button"
-            size="m"
-            preset="overlay"
-            priority="primary"
-            fullWidth
-            className="finance-page__modern-summary-action-v2"
-            onClick={handleOpenTransferFundsModal}
-          >
-            {finance.newContentV2.agencyCard.actionLabel}
-          </Button>
-        </article>
-
-        <article className="finance-page__modern-summary-card-v2">
-          <div className="finance-page__modern-summary-card-head-v2">
-            <Text as="span" variant="m20">
               {finance.newContentV2.walletCard.title}
             </Text>
-            <Icon name="infoCircle" variant="plain" className="finance-page__modern-summary-icon-v2" />
+            <span className="finance-page__modern-summary-tooltip-trigger-v2" tabIndex={0}>
+              <Icon name="question-outline" variant="plain" className="finance-page__modern-summary-icon-v2" />
+              <Tooltip className="finance-page__modern-summary-tooltip-v2" size="s" anchor="bottom">
+                Деньги, которыми вы оплачиваете рекламу и услуги Авито
+              </Tooltip>
+            </span>
           </div>
           <Text as="strong" variant="h2" className="finance-page__modern-summary-amount-v2">
             {walletAmountLabel}
@@ -919,11 +670,40 @@ export function FinancePage() {
             </Button>
           </div>
         </article>
+
+        <article className="finance-page__modern-summary-card-v2">
+          <div className="finance-page__modern-summary-card-head-v2">
+            <Text as="span" variant="m20">
+              {finance.newContentV2.agencyCard.title}
+            </Text>
+            <span className="finance-page__modern-summary-tooltip-trigger-v2" tabIndex={0}>
+              <Icon name="question-outline" variant="plain" className="finance-page__modern-summary-icon-v2" />
+              <Tooltip className="finance-page__modern-summary-tooltip-v2" size="s" anchor="bottom">
+                Деньги, которые можно распределить между клиентами.
+              </Tooltip>
+            </span>
+          </div>
+          <Text as="strong" variant="h2" className="finance-page__modern-summary-amount-v2">
+            {agencyAmountLabel}
+          </Text>
+          <Text as="p" variant="m20" className="finance-page__modern-summary-note-v2">
+            {agencyCardNoteV2}
+          </Text>
+          <Button
+            type="button"
+            size="m"
+            preset="overlay"
+            priority="primary"
+            fullWidth
+            className="finance-page__modern-summary-action-v2"
+            onClick={handleOpenTransferFundsModal}
+          >
+            {finance.newContentV2.agencyCard.actionLabel}
+          </Button>
+        </article>
       </div>
     </section>
   )
-
-  const summarySection = summarySectionV2
 
   const operationsSection = (
     <section className="finance-page__modern-operations">
@@ -957,8 +737,11 @@ export function FinancePage() {
     </section>
   )
 
-  const nextContent = (
+  const pageContent = (
     <>
+      <div className="finance-page__title">
+        <h1>{finance.title}</h1>
+      </div>
       {summarySection}
       {operationsSection}
     </>
@@ -967,22 +750,14 @@ export function FinancePage() {
     <RedesignContentShell
       title={finance.title}
       panels={[
-        isFinanceNewContentV2Enabled
-          ? {
-              className: 'finance-page__redesign-panel-shell finance-page__redesign-panel-shell--summary-v2',
-              content: (
-                <div className="finance-page__redesign-panel finance-page__redesign-panel--summary">
-                  {summarySection}
-                </div>
-              ),
-            }
-          : {
-              content: (
-                <div className="finance-page__redesign-panel finance-page__redesign-panel--summary">
-                  {summarySection}
-                </div>
-              ),
-            },
+        {
+          className: 'finance-page__redesign-panel-shell finance-page__redesign-panel-shell--summary-v2',
+          content: (
+            <div className="finance-page__redesign-panel finance-page__redesign-panel--summary">
+              {summarySection}
+            </div>
+          ),
+        },
         {
           content: (
             <div className="finance-page__redesign-panel finance-page__redesign-panel--operations">
@@ -994,17 +769,7 @@ export function FinancePage() {
     />
   )
 
-  const defaultContent = (
-    <>
-      <div className="finance-page__title">
-        <h1>{finance.title}</h1>
-      </div>
-      {isAnyFinanceNewContentEnabled ? nextContent : legacyContent}
-    </>
-  )
-
-  const redesignAwareContent =
-    isRedesignEnabled && isAnyFinanceNewContentEnabled ? redesignContent : defaultContent
+  const redesignAwareContent = isRedesignEnabled ? redesignContent : pageContent
 
   return <CabinetShell content={redesignAwareContent} />
 }

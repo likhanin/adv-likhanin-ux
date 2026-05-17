@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" width="13" height="16" overflow="visible" style="display: block;" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon">
+<g id="Icon_2">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1.50488 3.50391H9.49997V5.49499H11.4975V12.5039C11.4975 13.6085 10.6021 14.5039 9.49752 14.5039H3.50488C2.40031 14.5039 1.50488 13.6085 1.50488 12.5039V3.50391ZM9.49997 6.49499V12.0006H8.49997V4.50391H2.50488V12.5039C2.50488 13.0562 2.9526 13.5039 3.50488 13.5039H9.49752C10.0498 13.5039 10.4975 13.0562 10.4975 12.5039V6.49499H9.49997Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6.99997 7L3.99997 7V6L6.99997 6V7Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6.99997 9L3.99997 9V8L6.99997 8V9Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M5.49997 11H3.99997V10H5.49997V11Z" fill="currentColor"/>
+</g>
+</g>
+</svg>

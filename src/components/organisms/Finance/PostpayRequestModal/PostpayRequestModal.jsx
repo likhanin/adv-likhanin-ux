@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button } from '../../../atoms/Button/Button'
-import { InputField } from '../../../atoms/InputField/InputField'
+import { Input } from '../../../molecules/Input/Input'
 import { getAppCopy, useAppLocale } from '../../../../i18n/useAppLocale'
 import { useModal } from '../../../../store/modal/useModal'
 import './PostpayRequestModal.css'
@@ -39,7 +39,7 @@ export function PostpayRequestModal({ defaultAmount = 0, minAmount = 200000, max
     <div className="postpay-request-modal">
       <p className="postpay-request-modal__description">{appCopy.finance.postpayModal.description}</p>
 
-      <InputField
+      <Input
         id="postpay-amount"
         className="postpay-request-modal__field-group"
         type="text"
@@ -49,7 +49,8 @@ export function PostpayRequestModal({ defaultAmount = 0, minAmount = 200000, max
         label={appCopy.finance.postpayModal.amountLabel}
         hint={hintText}
         error={errorText}
-        clearLabel={appCopy.finance.postpayModal.clearAmountLabel}
+        postfix="₽"
+        clearable
         onChange={(nextValue) => {
           setIsSubmitAttempted(false)
           setAmount(formatCurrencyValue(parseAmountValue(nextValue)))

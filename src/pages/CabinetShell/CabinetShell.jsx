@@ -1,8 +1,7 @@
 import { FeatureTogglesPanel } from '../../components/organisms/FeatureToggles/FeatureTogglesPanel/FeatureTogglesPanel'
 import { useDrawer } from '../../store/drawer/useDrawer'
 import { SiteFooter } from '../../components/organisms/Footer/SiteFooter/SiteFooter'
-import { HeaderMainNav } from '../../components/organisms/Header/HeaderMainNav/HeaderMainNav'
-import { HeaderTopBar } from '../../components/organisms/Header/HeaderTopBar/HeaderTopBar'
+import { Header } from '../../components/organisms/Header/Header'
 import { FloatingSupportDock } from '../../components/organisms/FloatingSupport/FloatingSupportDock/FloatingSupportDock'
 import { ProfileSidebar } from '../../components/organisms/Sidebar/ProfileSidebar/ProfileSidebar'
 import { RedesignSidebar } from '../../components/organisms/Sidebar/RedesignSidebar/RedesignSidebar'
@@ -22,11 +21,11 @@ function formatCurrencyValue(value) {
 }
 
 const POSTPAY_LIMIT = 1500000
+const ENABLED_SIDEBAR_HREFS = new Set(['/clients', '/finance'])
 
 export function CabinetShell({ content, sidebarWallet = null, sidebarPostpayDebt = null }) {
   const locale = useAppLocale()
   const appCopy = getAppCopy(locale)
-  const isFinanceNewContentV2Enabled = useFeatureToggle('financeNewContentV2')
   const isRedesignEnabled = useFeatureToggle('redesignEnabled')
   const { walletAmount } = useFinanceSession()
   const { openDrawer } = useDrawer()
@@ -36,49 +35,45 @@ export function CabinetShell({ content, sidebarWallet = null, sidebarPostpayDebt
     footer: footerContent,
     floatingChat,
   } = getCabinetStageContent(locale)
-  const derivedSidebarNavigation = isFinanceNewContentV2Enabled
-    ? sidebarContent.navigation.map((item) =>
-        item.href === '/my-ads'
-          ? {
-              ...item,
-              label: locale === 'en' ? 'Summary' : 'Сводка',
-            }
-          : item,
-      )
-    : sidebarContent.navigation
-  const derivedSidebarWallet =
-    isFinanceNewContentV2Enabled
+  const derivedSidebarNavigation = sidebarContent.navigation.map((item) =>
+    item.href === '/my-ads'
       ? {
-          ...sidebarContent.wallet,
-          amount: formatCurrencyValue(walletAmount),
+          ...item,
+          label: locale === 'en' ? 'Summary' : 'Сводка',
+          disabled: !ENABLED_SIDEBAR_HREFS.has(item.href),
         }
-      : sidebarContent.wallet
+      : {
+          ...item,
+          disabled: !ENABLED_SIDEBAR_HREFS.has(item.href),
+        },
+  )
+  const derivedSidebarWallet = {
+    ...sidebarContent.wallet,
+    amount: formatCurrencyValue(walletAmount),
+  }
   const usedPostpayAmount = Math.min(Math.max(-walletAmount, 0), POSTPAY_LIMIT)
-  const derivedSidebarPostpayDebt =
-    isFinanceNewContentV2Enabled
-      ? {
-          title: appCopy.finance.sidebarPostpayTitle,
-          usageLabel: appCopy.finance.sidebarPostpayUsage(
-            formatAmountValue(usedPostpayAmount),
-            formatAmountValue(POSTPAY_LIMIT),
-          ),
-          dueLabel: appCopy.finance.sidebarDebtDescription,
-          progress: POSTPAY_LIMIT > 0 ? (usedPostpayAmount / POSTPAY_LIMIT) * 100 : 0,
-        }
-      : null
+  const derivedSidebarPostpayDebt = {
+    title: appCopy.finance.sidebarPostpayTitle,
+    usageLabel: appCopy.finance.sidebarPostpayUsage(
+      formatAmountValue(usedPostpayAmount),
+      formatAmountValue(POSTPAY_LIMIT),
+    ),
+    dueLabel: appCopy.finance.sidebarDebtDescription,
+    progress: POSTPAY_LIMIT > 0 ? (usedPostpayAmount / POSTPAY_LIMIT) * 100 : 0,
+  }
 
-  const header = isRedesignEnabled ? null : (
-    <>
-      <HeaderTopBar
-        links={headerContent.topLinks}
-        primaryAction={headerContent.primaryAction}
-        secondaryAction={headerContent.secondaryAction}
-        actionIcons={headerContent.actionIcons}
-        avatar={headerContent.avatar}
-        ariaLabel={appCopy.header.topNavAriaLabel}
-      />
-      <HeaderMainNav links={headerContent.categoryLinks} ariaLabel={appCopy.header.categoriesAriaLabel} />
-    </>
+  const header = (
+    <Header
+      variant={isRedesignEnabled ? 'redesign' : 'default'}
+      topLinks={headerContent.topLinks}
+      categoryLinks={headerContent.categoryLinks}
+      primaryAction={headerContent.primaryAction}
+      secondaryAction={headerContent.secondaryAction}
+      actionIcons={headerContent.actionIcons}
+      avatar={headerContent.avatar}
+      topNavAriaLabel={appCopy.header.topNavAriaLabel}
+      categoriesAriaLabel={appCopy.header.categoriesAriaLabel}
+    />
   )
 
   const sidebar = (
@@ -105,6 +100,7 @@ export function CabinetShell({ content, sidebarWallet = null, sidebarPostpayDebt
       links={footerContent.links}
       legalText={footerContent.legalText}
       featureTogglesLabel={footerContent.featureTogglesLabel}
+      showcaseLabel={footerContent.showcaseLabel}
       socialLinks={footerContent.socialLinks}
       linksAriaLabel={appCopy.footer.linksAriaLabel}
       socialsAriaLabel={appCopy.footer.socialsAriaLabel}

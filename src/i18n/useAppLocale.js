@@ -52,7 +52,7 @@ function createKnowledgeBaseDraftArticle(locale, title, options = {}) {
     ],
     note: isEnglish
       ? 'The content team is still assembling this material.'
-      : 'Команда еще собирает материал для этого раздела.',
+      : 'Команда ещё собирает материал для этого раздела.',
   })
 }
 
@@ -82,7 +82,6 @@ export function getAppCopy(locale = 'ru') {
           toolsGroupLabel: 'Tools',
           roles: ['Employee', 'Overlord'],
           userName: 'Maxim',
-          financeBadge: 'New',
           items: {
             overview: 'Overview',
             messages: 'Messages',
@@ -117,17 +116,16 @@ export function getAppCopy(locale = 'ru') {
         resetLabel: 'Reset',
         toggleLabel: 'Toggle',
         labels: {
-          financeNewContentV2: 'Finance with postpay 2',
           darkTheme: 'Dark theme',
           englishLocale: 'English localization',
           redesignEnabled: 'Switch to redesign',
+          knowledgeBaseEnabled: 'Knowledge base',
         },
         descriptions: {
-          financeNewContentV2:
-            'Enables postpay with a negative wallet balance and keeps postpay progress separate from the wallet.',
           darkTheme: 'Enables the black theme on the production design.',
           englishLocale: 'Changes the language across the entire project and in other feature toggles.',
           redesignEnabled: 'Switches the whole project to the block redesign with a grey background.',
+          knowledgeBaseEnabled: 'Shows the floating knowledge base button.',
         },
       },
       finance: {
@@ -153,7 +151,6 @@ export function getAppCopy(locale = 'ru') {
       postpayModal: {
         description: 'Choose the amount and repayment period.',
         amountLabel: 'Amount',
-        clearAmountLabel: 'Clear amount',
         submitLabel: 'Request',
         rangeHint: (minAmount, maxAmount) => `${minAmount} ₽ to ${maxAmount} ₽`,
         rangeError: (minAmount, maxAmount) => `Enter an amount from ${minAmount} ₽ to ${maxAmount} ₽`,
@@ -295,7 +292,6 @@ export function getAppCopy(locale = 'ru') {
         toolsGroupLabel: 'Инструменты',
         roles: ['Сотрудник', 'Владыка'],
         userName: 'Максим',
-        financeBadge: 'Новое',
         items: {
           overview: 'Обзор',
           messages: 'Сообщения',
@@ -330,17 +326,16 @@ export function getAppCopy(locale = 'ru') {
       resetLabel: 'Сбросить',
       toggleLabel: 'Переключить',
       labels: {
-        financeNewContentV2: 'Финансы с постоплатой 2',
-        darkTheme: 'Черная тема',
+        darkTheme: 'Чёрная тема',
         englishLocale: 'Локализация на английский',
         redesignEnabled: 'Переключиться на редизайн',
+        knowledgeBaseEnabled: 'База знаний',
       },
       descriptions: {
-        financeNewContentV2:
-          'Включает постоплату с уходом в минус. Прогресс постоплаты отдельно от кошелька.',
-        darkTheme: 'Включает черную тему на продовом дизайне.',
-        englishLocale: 'Меняет язык во всем проекте и в других фичатогглах.',
+        darkTheme: 'Включает чёрную тему на продовом дизайне.',
+        englishLocale: 'Меняет язык во всём проекте и в других фичатогглах.',
         redesignEnabled: 'Весь проект переходит на блочку с серым фоном.',
+        knowledgeBaseEnabled: 'Показывает плавающую кнопку базы знаний.',
       },
     },
     finance: {
@@ -366,7 +361,6 @@ export function getAppCopy(locale = 'ru') {
       postpayModal: {
         description: 'Выберите сумму и период погашения.',
         amountLabel: 'Сумма',
-        clearAmountLabel: 'Очистить сумму',
         submitLabel: 'Запросить',
         rangeHint: (minAmount, maxAmount) => `от ${minAmount} ₽ до ${maxAmount} ₽`,
         rangeError: (minAmount, maxAmount) => `Введите сумму от ${minAmount} ₽ до ${maxAmount} ₽`,

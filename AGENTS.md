@@ -21,3 +21,10 @@
 - Be direct and concise.
 - Do the work first; explain briefly after.
 - Treat the repository as the source of truth for ongoing chat behavior in this project.
+
+## Showcase Fidelity
+
+- Components shown in the showcase must render the same real component implementation used in the product.
+- Any visual/layout/content change inside an organism or component must be made in the component itself so it appears both in the product and in the showcase.
+- Showcase-specific CSS must not change the internal appearance, spacing, background, content, or layout of a component.
+- The only allowed showcase-only visual addition is an external preview treatment around the component, such as a soft shadow on the organism preview surface.

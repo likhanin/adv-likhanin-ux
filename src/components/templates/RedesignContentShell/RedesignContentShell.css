@@ -1,4 +1,7 @@
 .redesign-content-shell {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
   padding-top: 74px;
 }
 
@@ -12,7 +15,7 @@
 
 .redesign-content-shell__title h1 {
   margin: 0;
-  color: #000;
+  color: var(--color-text-primary);
   font-family: var(--font-sans);
   font-size: var(--type-h1-font-size);
   font-weight: var(--font-weight-extrabold);
@@ -24,32 +27,28 @@
 }
 
 .redesign-content-shell__panels {
-  margin-top: 24px;
   display: grid;
   gap: 24px;
+  min-width: 0;
+  margin-top: 24px;
 }
 
 .redesign-content-shell__panel {
   box-sizing: border-box;
-  width: 1048px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 1048px;
+  min-width: 0;
   padding: 20px 24px 28px;
   border-radius: 40px;
-  background: #fff;
+  background: var(--color-bg-elevation-1);
 }
 
 [data-theme='dark'] .redesign-content-shell__title h1 {
-  color: #fff;
+  color: var(--color-text-inverse-primary);
 }
 
 [data-theme='dark'] .redesign-content-shell__panel {
-  background: #141414;
-}
-
-@media (max-width: 1365px) {
-  .redesign-content-shell__panel {
-    width: 100%;
-  }
+  background: var(--color-bg-inverse-constant-default);
 }
 
 @media (max-width: 1023px) {

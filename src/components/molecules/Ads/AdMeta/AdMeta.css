@@ -4,14 +4,14 @@
 }
 
 .ad-meta-block__price {
-  color: var(--color-ink);
+  color: var(--color-text-primary);
   font-size: var(--type-h5-font-size);
   line-height: var(--type-h5-line-height);
 }
 
 .ad-meta-block__meta,
 .ad-meta-block__location {
-  color: var(--color-ink-soft);
+  color: var(--color-text-secondary);
 }
 
 .ad-meta-block__location::before {
@@ -21,6 +21,10 @@
   height: 8px;
   margin-right: 8px;
   border-radius: 50%;
-  background: linear-gradient(180deg, #2891ff, #135de6);
+  background: linear-gradient(
+    180deg,
+    var(--color-components-ads-meta-location-start),
+    var(--color-components-ads-meta-location-end)
+  );
   vertical-align: 1px;
 }

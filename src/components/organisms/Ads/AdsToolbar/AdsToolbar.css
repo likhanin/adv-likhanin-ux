@@ -5,9 +5,9 @@
   gap: 18px;
   padding: 16px 20px;
   margin-bottom: 18px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 26px;
-  background: linear-gradient(180deg, rgba(249, 250, 253, 0.95), rgba(255, 255, 255, 0.95));
+  background: linear-gradient(180deg, var(--color-bg-accent), var(--color-bg-elevation-1));
   box-shadow: var(--shadow-soft);
 }
 

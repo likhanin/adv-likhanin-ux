@@ -1,0 +1,203 @@
+.input-control {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  position: relative;
+  border: 0;
+  background: var(--color-bg-default);
+  color: var(--color-text-primary);
+  transition:
+    box-shadow 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.input-control:hover {
+  background: var(--color-bg-default);
+}
+
+.input-control:focus-within {
+  background: var(--color-bg-default);
+}
+
+.input-control--state-error {
+  box-shadow: inset 0 0 0 1px var(--color-text-error);
+}
+
+.input-control--state-error:focus-within {
+  box-shadow: inset 0 0 0 1px var(--color-text-error);
+}
+
+.input-control--disabled {
+  color: var(--color-text-secondary);
+  background: var(--color-bg-default);
+  cursor: not-allowed;
+}
+
+.input-control--disabled:hover {
+  background: var(--color-bg-default);
+}
+
+.input-control--readonly {
+  background: var(--color-bg-default);
+  color: var(--color-text-primary);
+}
+
+.input-control--readonly:hover {
+  background: var(--color-bg-default);
+}
+
+.input-control__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--font-letter-spacing-base);
+}
+
+.input-control--has-prefix .input-control__input,
+.input-control--has-postfix .input-control__input {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: 100%;
+  field-sizing: content;
+}
+
+.input-control--has-prefix .input-control__input:focus:placeholder-shown,
+.input-control--has-postfix .input-control__input:focus:placeholder-shown {
+  flex: 0 0 1px;
+  width: 1px;
+}
+
+.input-control__input::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 1;
+}
+
+.input-control__input:focus::placeholder {
+  color: transparent;
+}
+
+.input-control__input:focus {
+  outline: none;
+}
+
+.input-control__input:disabled {
+  cursor: not-allowed;
+}
+
+.input-control__slot,
+.input-control__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: var(--color-text-secondary);
+}
+
+.input-control:focus-within .input-control__slot {
+  color: var(--color-text-primary);
+}
+
+.input-control--state-error .input-control__slot {
+  color: var(--color-text-error);
+}
+
+.input-control__slot--left {
+  margin-right: 6px;
+}
+
+.input-control__slot--right,
+.input-control__action {
+  margin-left: 6px;
+}
+
+.input-control__action {
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 16px;
+  transform: translateY(-50%);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.input-control__action:hover {
+  color: var(--color-text-primary);
+}
+
+.input-control__affix {
+  flex: 0 0 auto;
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.input-control__affix--prefix {
+  margin-right: 6px;
+}
+
+.input-control__affix--postfix {
+  margin-left: 6px;
+}
+
+.input-control--state-filled .input-control__affix,
+.input-control--state-error .input-control__affix {
+  color: var(--color-text-primary);
+}
+
+.input-control--size-s {
+  min-height: 36px;
+  padding: 9px 10px 11px 14px;
+  border-radius: 12px;
+}
+
+.input-control--clearable.input-control--size-s {
+  padding-right: 38px;
+}
+
+.input-control--size-s .input-control__input,
+.input-control--size-s .input-control__affix {
+  font-size: var(--type-s20-font-size);
+  line-height: var(--type-s20-line-height);
+}
+
+.input-control--size-m {
+  min-height: 44px;
+  padding: 11px 12px 13px 16px;
+  border-radius: 12px;
+}
+
+.input-control--clearable.input-control--size-m {
+  padding-right: 44px;
+}
+
+.input-control--size-m .input-control__input,
+.input-control--size-m .input-control__affix {
+  font-size: var(--type-m20-font-size);
+  line-height: var(--type-m20-line-height);
+}
+
+.input-control--size-l {
+  min-height: 52px;
+  padding: 15px 16px 17px 18px;
+  border-radius: 16px;
+}
+
+.input-control--clearable.input-control--size-l {
+  padding-right: 44px;
+}
+
+.input-control--size-l .input-control__input,
+.input-control--size-l .input-control__affix {
+  font-size: var(--type-m20-font-size);
+  line-height: var(--type-m20-line-height);
+}

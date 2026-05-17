@@ -1,6 +1,6 @@
 import { Button } from '../../components/atoms/Button/Button'
 import { Icon } from '../../components/atoms/Icon/Icon'
-import { AppDataTable } from '../../components/organisms/Table/AppDataTable/AppDataTable'
+import { DesignSystemDataTable } from '../../components/organisms/Table/DesignSystemDataTable/DesignSystemDataTable'
 import { RedesignContentShell } from '../../components/templates/RedesignContentShell/RedesignContentShell'
 import { useAppLocale } from '../../i18n/useAppLocale'
 import { useFeatureToggle } from '../../store/featureToggles/useFeatureToggles'
@@ -19,7 +19,7 @@ const EMPLOYEES_CONTENT = {
     columns: [
       { key: 'employee', label: 'Сотрудник ↑', width: '27%' },
       { key: 'avitoId', label: 'Avito ID', width: '21%' },
-      { key: 'clients', label: 'Клиенты ↑↓', width: '10%' },
+      { key: 'clients', label: 'Клиенты ↑↓', width: '10%', align: 'right' },
       { key: 'access', label: 'Права доступа', width: '23%' },
       { key: 'lastOnline', label: 'Был онлайн ↑↓', width: '19%' },
     ],
@@ -69,7 +69,7 @@ const EMPLOYEES_CONTENT = {
     columns: [
       { key: 'employee', label: 'Employee ↑', width: '27%' },
       { key: 'avitoId', label: 'Avito ID', width: '21%' },
-      { key: 'clients', label: 'Clients ↑↓', width: '10%' },
+      { key: 'clients', label: 'Clients ↑↓', width: '10%', align: 'right' },
       { key: 'access', label: 'Access rights', width: '23%' },
       { key: 'lastOnline', label: 'Last online ↑↓', width: '19%' },
     ],
@@ -141,7 +141,7 @@ export function EmployeesPage() {
             </button>
           </div>
 
-          <AppDataTable
+          <DesignSystemDataTable
             className="employees-page__table"
             columns={content.columns}
             rows={content.rows}

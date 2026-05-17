@@ -10,7 +10,6 @@ const DEFAULT_MODAL_STATE = {
   size: 'xl',
   showCloseButton: true,
   showHeader: true,
-  panelClassName: '',
 }
 
 export function ModalProvider({ children }) {
@@ -46,7 +45,6 @@ export function ModalProvider({ children }) {
         size = 'xl',
         showCloseButton = true,
         showHeader = true,
-        panelClassName = '',
       }) {
         setModalState({
           isOpen: true,
@@ -56,7 +54,6 @@ export function ModalProvider({ children }) {
           size,
           showCloseButton,
           showHeader,
-          panelClassName,
         })
       },
       updateModal(nextState) {
@@ -83,7 +80,6 @@ export function ModalProvider({ children }) {
         size={modalState.size}
         showCloseButton={modalState.showCloseButton}
         showHeader={modalState.showHeader}
-        panelClassName={modalState.panelClassName}
         onClose={value.closeModal}
       >
         {modalState.content}

@@ -1,34 +1,23 @@
 import { useMemo, useState } from 'react'
 import { getCabinetStageContent } from '../../pages/CabinetStagePage/constants'
-import { useFeatureToggle } from '../featureToggles/useFeatureToggles'
 import { FinanceSessionContext } from './financeSessionContext'
 
 function parseAmountValue(value) {
   return Number(String(value).replace(/[^\d]/g, '')) || 0
 }
 
-function createDefaultFinanceSession({ isFinanceNewContentV2Enabled }) {
+function createDefaultFinanceSession() {
   return {
-    agencyBalance: parseAmountValue(getCabinetStageContent('ru').finance.newContent.agencyCard.amount),
-    walletAmount: isFinanceNewContentV2Enabled
-      ? parseAmountValue(getCabinetStageContent('ru').finance.newContentV2.walletCard.amount)
-      : parseAmountValue(getCabinetStageContent('ru').finance.newContent.walletCard.amount),
-    postpayReceivedAmount: 0,
+    agencyBalance: 0,
+    walletAmount: parseAmountValue(getCabinetStageContent('ru').finance.newContentV2.walletCard.amount),
   }
 }
 
 export function FinanceSessionProvider({ children }) {
-  const isFinanceNewContentV2Enabled = useFeatureToggle('financeNewContentV2')
-  const initialSession = useMemo(
-    () => createDefaultFinanceSession({ isFinanceNewContentV2Enabled }),
-    [isFinanceNewContentV2Enabled],
-  )
+  const initialSession = useMemo(() => createDefaultFinanceSession(), [])
 
   return (
-    <FinanceSessionStateProvider
-      key={isFinanceNewContentV2Enabled ? 'finance-v2-on' : 'finance-off'}
-      initialSession={initialSession}
-    >
+    <FinanceSessionStateProvider initialSession={initialSession}>
       {children}
     </FinanceSessionStateProvider>
   )
@@ -40,20 +29,6 @@ function FinanceSessionStateProvider({ children, initialSession }) {
   const value = useMemo(
     () => ({
       ...financeSession,
-      requestPostpay(amount) {
-        setFinanceSession((currentSession) => ({
-          ...currentSession,
-          walletAmount: currentSession.walletAmount + amount,
-          postpayReceivedAmount: currentSession.postpayReceivedAmount + amount,
-        }))
-      },
-      returnPostpay() {
-        setFinanceSession((currentSession) => ({
-          ...currentSession,
-          walletAmount: currentSession.walletAmount - currentSession.postpayReceivedAmount,
-          postpayReceivedAmount: 0,
-        }))
-      },
       transferFunds(amount) {
         setFinanceSession((currentSession) => ({
           ...currentSession,

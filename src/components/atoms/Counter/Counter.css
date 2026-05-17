@@ -3,8 +3,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: #ff4a63;
-  color: #fff;
+  background: var(--color-components-badge-error);
+  color: var(--color-text-inverse-primary);
   font-size: var(--type-xs10-font-size);
   font-weight: var(--font-weight-extrabold);
   line-height: var(--type-xs10-line-height);

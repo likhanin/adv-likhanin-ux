@@ -39,9 +39,9 @@
   justify-content: space-between;
   gap: 20px;
   padding: 18px 20px;
-  border: 1px solid rgba(17, 19, 24, 0.08);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 18px;
-  background: #fff;
+  background: var(--color-bg-elevation-1);
 }
 
 .feature-toggles-panel__meta {

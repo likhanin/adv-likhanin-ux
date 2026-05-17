@@ -16,8 +16,13 @@
   height: 44px;
   border-radius: 16px 16px 22px 22px;
   background:
-    linear-gradient(135deg, #ffd4dc, #f6f1ff 58%, #d2f2ff),
-    linear-gradient(#fff, #fff);
+    linear-gradient(
+      135deg,
+      var(--color-components-promo-visual-shirt-start),
+      var(--color-components-promo-visual-shirt-middle) 58%,
+      var(--color-components-promo-visual-shirt-end)
+    ),
+    linear-gradient(var(--color-bg-elevation-1), var(--color-bg-elevation-1));
   clip-path: polygon(10% 14%, 26% 0, 40% 0, 50% 12%, 60% 0, 74% 0, 90% 14%, 100% 36%, 82% 44%, 82% 100%, 18% 100%, 18% 44%, 0 36%);
 }
 
@@ -27,7 +32,11 @@
   width: 34px;
   height: 34px;
   border-radius: 12px 12px 12px 4px;
-  background: linear-gradient(180deg, #d7f5ff, #b5e0ff);
+  background: linear-gradient(
+    180deg,
+    var(--color-components-promo-visual-check-start),
+    var(--color-components-promo-visual-check-end)
+  );
 }
 
 .promo-visual__check::before {
@@ -37,5 +46,5 @@
   display: grid;
   place-items: center;
   font-weight: var(--font-weight-extrabold);
-  color: #1274b4;
+  color: var(--color-components-promo-visual-check-text);
 }

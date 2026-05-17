@@ -5,6 +5,20 @@
   justify-content: center;
   width: 30px;
   height: 30px;
+  color: var(--color-text-secondary);
+  transition: color 160ms ease;
+}
+
+.top-action-icon:hover {
+  color: var(--color-text-primary);
+}
+
+.top-action-icon--favorites {
+  color: var(--color-primitives-gray-gray20);
+}
+
+.top-action-icon--favorites:hover {
+  color: var(--color-primitives-gray-gray44);
 }
 
 .top-action-icon__badge {

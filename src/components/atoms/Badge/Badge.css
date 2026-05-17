@@ -9,8 +9,8 @@
   font-size: var(--type-xs10-font-size);
   font-weight: var(--font-weight-extrabold);
   line-height: var(--type-xs10-line-height);
-  color: #fff;
-  background: #ff4a63;
+  color: var(--color-text-inverse-primary);
+  background: var(--color-components-badge-error);
 }
 
 .badge--small {

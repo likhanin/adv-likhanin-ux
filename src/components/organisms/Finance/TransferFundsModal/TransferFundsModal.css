@@ -19,161 +19,38 @@
   margin-top: 26px;
 }
 
+.transfer-funds-modal__postpay-alert {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 26px;
+  background: var(--color-bg-warning);
+  color: var(--color-text-primary);
+}
+
+.transfer-funds-modal__postpay-alert + .transfer-funds-modal__submit {
+  margin-top: 16px;
+}
+
+.transfer-funds-modal__postpay-alert-icon {
+  flex: 0 0 auto;
+  margin-right: 6px;
+  color: var(--color-text-warning);
+}
+
+.transfer-funds-modal__postpay-alert-text {
+  font-size: var(--type-m20-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-m20-line-height);
+}
+
 .transfer-funds-modal__submit:disabled {
   opacity: 0.48;
   cursor: not-allowed;
   transform: none;
-}
-
-.transfer-funds-modal--success {
-  padding-top: 0;
-}
-
-.transfer-funds-modal--success-redesign {
-  position: relative;
-}
-
-.transfer-funds-modal__success-visual {
-  position: relative;
-  display: grid;
-  place-items: center;
-  height: 274px;
-  border-radius: 32px;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 36%, rgba(192, 125, 255, 0.28), transparent 36%),
-    linear-gradient(180deg, rgba(233, 220, 255, 0.92), rgba(243, 238, 252, 0.96));
-}
-
-.transfer-funds-modal__success-base {
-  position: absolute;
-  left: 50%;
-  bottom: -18px;
-  width: 164px;
-  height: 46px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #b27cff, #8e4dff);
-  box-shadow:
-    inset 0 6px 14px rgba(255, 255, 255, 0.26),
-    0 12px 22px rgba(142, 77, 255, 0.24);
-  transform: translateX(-50%);
-}
-
-.transfer-funds-modal__success-base::before {
-  content: '';
-  position: absolute;
-  inset: 9px 18px 10px;
-  border-radius: inherit;
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.transfer-funds-modal__success-coin {
-  position: absolute;
-  left: 50%;
-  display: grid;
-  place-items: center;
-  width: 164px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  color: #8a41ff;
-  background:
-    radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.18) 55%, transparent 56%),
-    linear-gradient(180deg, rgba(226, 188, 255, 0.98), rgba(196, 131, 255, 0.96));
-  box-shadow:
-    inset 0 0 0 6px rgba(255, 255, 255, 0.22),
-    inset 0 0 36px rgba(151, 79, 255, 0.18),
-    0 18px 28px rgba(139, 72, 255, 0.22);
-}
-
-.transfer-funds-modal__success-coin::before {
-  content: '';
-  position: absolute;
-  inset: 10px;
-  border-radius: 50%;
-  border: 1px solid rgba(138, 65, 255, 0.2);
-}
-
-.transfer-funds-modal__success-coin span {
-  position: relative;
-  font-size: 82px;
-  font-weight: var(--font-weight-extrabold);
-  line-height: 1;
-  text-shadow: 0 6px 18px rgba(138, 65, 255, 0.18);
-}
-
-.transfer-funds-modal__success-coin--back {
-  bottom: 48px;
-  transform: translateX(-50%) scale(0.88);
-}
-
-.transfer-funds-modal__success-coin--front {
-  top: 58px;
-  transform: translateX(-50%);
-}
-
-.transfer-funds-modal__success-copy {
-  margin-top: 28px;
-  text-align: center;
-}
-
-.transfer-funds-modal__success-body {
-  display: grid;
-  gap: 28px;
-}
-
-.transfer-funds-modal__success-heading {
-  margin: 0;
-  color: var(--color-text-primary);
-  font-size: var(--type-h1-font-size);
-  font-weight: var(--font-weight-extrabold);
-  line-height: var(--type-h1-line-height);
-  text-align: center;
-}
-
-.transfer-funds-modal__success-amount {
-  display: block;
-  color: var(--color-text-primary);
-  font-size: var(--type-h0-font-size);
-  font-weight: var(--font-weight-extrabold);
-  line-height: var(--type-h0-line-height);
-}
-
-.transfer-funds-modal__success-title {
-  margin-top: 10px;
-  color: var(--color-text-primary);
-  font-size: var(--type-h1-font-size);
-  font-weight: var(--font-weight-extrabold);
-  line-height: var(--type-h1-line-height);
-}
-
-.transfer-funds-modal__success-visual--floating {
-  position: absolute;
-  left: 50%;
-  bottom: calc(100% + 6px);
-  width: 280px;
-  height: 208px;
-  background: transparent;
-  overflow: visible;
-  transform: translateX(-50%);
-}
-
-.transfer-funds-modal__success-visual--floating .transfer-funds-modal__success-base {
-  bottom: 6px;
-  width: 198px;
-  height: 56px;
-}
-
-.transfer-funds-modal__success-visual--floating .transfer-funds-modal__success-coin {
-  width: 188px;
-}
-
-.transfer-funds-modal__success-visual--floating .transfer-funds-modal__success-coin--back {
-  bottom: 24px;
-  transform: translateX(-50%) scale(0.84);
-}
-
-.transfer-funds-modal__success-visual--floating .transfer-funds-modal__success-coin--front {
-  top: 0;
 }
 
 @media (max-width: 920px) {
@@ -186,35 +63,4 @@
     width: 100%;
   }
 
-  .transfer-funds-modal__success-visual {
-    height: 232px;
-    border-radius: 28px;
-  }
-
-  .transfer-funds-modal__success-coin {
-    width: 140px;
-  }
-
-  .transfer-funds-modal__success-coin span {
-    font-size: 72px;
-  }
-
-  .transfer-funds-modal__success-base {
-    width: 144px;
-    height: 40px;
-  }
-
-  .transfer-funds-modal__success-visual--floating {
-    width: 220px;
-    height: 164px;
-  }
-
-  .transfer-funds-modal__success-visual--floating .transfer-funds-modal__success-base {
-    width: 154px;
-    height: 42px;
-  }
-
-  .transfer-funds-modal__success-visual--floating .transfer-funds-modal__success-coin {
-    width: 144px;
-  }
 }

@@ -8,6 +8,14 @@
   display: grid;
 }
 
+.profile-sidebar__wallet-stack--debt .wallet-summary {
+  background: var(--color-bg-warning);
+}
+
+.profile-sidebar__wallet-stack--debt .postpay-debt-summary {
+  background: var(--color-bg-warning);
+}
+
 .profile-sidebar__wallet-layer {
   position: relative;
   z-index: 2;
@@ -31,4 +39,9 @@
   max-height: 260px;
   opacity: 1;
   transform: translateY(0);
+}
+
+.profile-sidebar__debt-layer--visible .postpay-debt-summary {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

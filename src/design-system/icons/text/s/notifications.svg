@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" width="10" height="16" overflow="visible" style="display: block;" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon" clip-path="url(#clip0_0_8)">
+<path id="Icon_2" fill-rule="evenodd" clip-rule="evenodd" d="M1.70711 10.7071L2 10.4142V10L2 7C2 5.34314 3.34314 4 4.99999 4C6.65685 3.99999 8 5.34314 8 7V10L8 10.4142L8.29289 10.7071L9 11.4142L9 12L1 12L1 11.4142L1.70711 10.7071ZM10 12V11L9 10L9 7C9 4.79085 7.20913 2.99999 4.99999 3C2.79086 3 0.999998 4.79086 0.999999 7L0.999999 10L0 11V12C0 12.5523 0.447716 13 1 13H4V14H6V13L9 13C9.55229 13 10 12.5523 10 12Z" fill="currentColor"/>
+</g>
+<defs>
+<clipPath id="clip0_0_8">
+<rect width="10" height="16" fill="currentColor"/>
+</clipPath>
+</defs>
+</svg>

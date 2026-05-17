@@ -19,7 +19,7 @@ export function AppModal({
   size = 'xl',
   showCloseButton = true,
   showHeader = true,
-  panelClassName = '',
+  presentation = 'fixed',
 }) {
   const locale = useAppLocale()
   const appCopy = getAppCopy(locale)
@@ -30,7 +30,7 @@ export function AppModal({
   }
 
   return (
-    <div className="app-modal" aria-hidden={!isOpen}>
+    <div className={['app-modal', `app-modal--${presentation}`].filter(Boolean).join(' ')} aria-hidden={!isOpen}>
       <button
         className="app-modal__overlay"
         type="button"
@@ -38,7 +38,7 @@ export function AppModal({
         onClick={onClose}
       />
       <section
-        className={['app-modal__panel', `app-modal__panel--${size}`, panelClassName].filter(Boolean).join(' ')}
+        className={['app-modal__panel', `app-modal__panel--${size}`].filter(Boolean).join(' ')}
         role="dialog"
         aria-modal="true"
         aria-label={normalizedTitle}

@@ -1,6 +1,6 @@
 const SHARED_WALLET_RU = {
   label: 'Кошелёк',
-  title: 'Кошелек',
+  title: 'Кошелёк',
   amount: '15 000 ₽',
   note: 'Нет бонусов',
 }
@@ -15,19 +15,18 @@ const SHARED_WALLET_EN = {
 const CABINET_STAGE_CONTENT_RU = {
   header: {
     topLinks: [
-      { label: 'Для бизнеса', caret: true },
+      { label: 'Для бизнеса' },
       { label: 'Карьера в Авито' },
       { label: 'Помощь' },
       { label: 'Каталоги', caret: true },
       { label: '#яПомогаю' },
     ],
     categoryLinks: [
-      { label: 'Бизнес360' },
       { label: 'Авто' },
       { label: 'Недвижимость' },
       { label: 'Работа' },
       { label: 'Услуги' },
-      { label: 'Ещё', caret: true },
+      { label: 'Ещё' },
     ],
     primaryAction: '+ Разместить объявление',
     secondaryAction: 'Мои объявления',
@@ -43,8 +42,8 @@ const CABINET_STAGE_CONTENT_RU = {
   },
   sidebar: {
     profile: {
-      title: 'BusyBunnyToys',
-      rating: '1.0',
+      title: 'ПерфАгентство',
+      rating: '4,9',
       reviews: '1 отзыв',
     },
     wallet: {
@@ -57,11 +56,11 @@ const CABINET_STAGE_CONTENT_RU = {
       { icon: 'stats', label: 'Мои объявления', href: '/my-ads', aliases: ['/'] },
       { icon: 'chat', label: 'Сообщения', href: '/messages', badge: 2 },
       { icon: 'star', label: 'Клиенты', href: '/clients' },
-      { icon: 'wallet', label: 'Финансы', href: '/finance', badge: 'Новое' },
-      { icon: 'team', label: 'Сотрудники', href: '/employees' },
-      { icon: 'chart', label: 'Аналитика спроса', href: '/demand-analytics' },
-      { icon: 'stats', label: 'Статистика', href: '/statistics' },
-      { icon: 'wallet', label: 'Кошелек', href: '/wallet', caret: true },
+      { icon: 'ruble', label: 'Финансы', href: '/finance' },
+      { icon: 'work', label: 'Сотрудники', href: '/employees' },
+      { icon: 'statistics', label: 'Аналитика спроса', href: '/demand-analytics' },
+      { icon: 'diagram', label: 'Статистика', href: '/statistics' },
+      { icon: 'wallet', label: 'Кошелёк', href: '/wallet', caret: true },
       { icon: 'shield', label: 'Для бизнеса', href: '/business' },
       { icon: 'profile', label: 'Профиль и настройки', href: '/profile', caret: true },
     ],
@@ -166,6 +165,7 @@ const CABINET_STAGE_CONTENT_RU = {
       { label: 'Свежие объявления' },
     ],
     featureTogglesLabel: 'Панель фича тогглов',
+    showcaseLabel: 'Витрина',
     legalText:
       'Авито — сайт объявлений России. Политика конфиденциальности и правила платформы применяются ко всем разделам кабинета.',
     socialLinks: [
@@ -196,7 +196,7 @@ const CABINET_STAGE_CONTENT_RU = {
       },
       postpayCard: {
         title: 'Постоплата',
-        description: 'Деньги поступят на кошелек',
+        description: 'Деньги поступят на кошелёк',
         amount: '1 500 000 ₽',
         note: 'Получено 0 из 1 500 000 ₽',
         actionLabel: 'Запросить',
@@ -209,7 +209,7 @@ const CABINET_STAGE_CONTENT_RU = {
       operationTabs: [
         { key: 'all', label: 'Все' },
         { key: 'agency', label: 'Баланс агентства' },
-        { key: 'wallet', label: 'Кошелек' },
+        { key: 'wallet', label: 'Кошелёк' },
       ],
     },
     newContentV2: {
@@ -308,19 +308,18 @@ const CABINET_STAGE_CONTENT_RU = {
 const CABINET_STAGE_CONTENT_EN = {
   header: {
     topLinks: [
-      { label: 'For business', caret: true },
+      { label: 'For business' },
       { label: 'Careers at Avito' },
       { label: 'Help' },
       { label: 'Catalogs', caret: true },
       { label: '#WeHelp' },
     ],
     categoryLinks: [
-      { label: 'Business360' },
       { label: 'Cars' },
       { label: 'Real estate' },
       { label: 'Jobs' },
       { label: 'Services' },
-      { label: 'More', caret: true },
+      { label: 'More' },
     ],
     primaryAction: '+ Post ad',
     secondaryAction: 'My ads',
@@ -336,8 +335,8 @@ const CABINET_STAGE_CONTENT_EN = {
   },
   sidebar: {
     profile: {
-      title: 'BusyBunnyToys',
-      rating: '1.0',
+      title: 'ПерфАгентство',
+      rating: '4,9',
       reviews: '1 review',
     },
     wallet: {
@@ -350,10 +349,10 @@ const CABINET_STAGE_CONTENT_EN = {
       { icon: 'stats', label: 'My ads', href: '/my-ads', aliases: ['/'] },
       { icon: 'chat', label: 'Messages', href: '/messages', badge: 2 },
       { icon: 'star', label: 'Clients', href: '/clients' },
-      { icon: 'wallet', label: 'Finance', href: '/finance', badge: 'New' },
-      { icon: 'team', label: 'Employees', href: '/employees' },
-      { icon: 'chart', label: 'Demand analytics', href: '/demand-analytics' },
-      { icon: 'stats', label: 'Statistics', href: '/statistics' },
+      { icon: 'ruble', label: 'Finance', href: '/finance' },
+      { icon: 'work', label: 'Employees', href: '/employees' },
+      { icon: 'statistics', label: 'Demand analytics', href: '/demand-analytics' },
+      { icon: 'diagram', label: 'Statistics', href: '/statistics' },
       { icon: 'wallet', label: 'Wallet', href: '/wallet', caret: true },
       { icon: 'shield', label: 'For business', href: '/business' },
       { icon: 'profile', label: 'Profile & settings', href: '/profile', caret: true },
@@ -459,6 +458,7 @@ const CABINET_STAGE_CONTENT_EN = {
       { label: 'Latest ads' },
     ],
     featureTogglesLabel: 'Feature toggles panel',
+    showcaseLabel: 'Showcase',
     legalText:
       'Avito is a classifieds platform in Russia. Privacy policy and platform rules apply to all cabinet sections.',
     socialLinks: [
@@ -615,7 +615,7 @@ const CABINET_ROUTES_RU = [
     description: 'Здесь будет страница подписки Pro.',
   },
   { path: '/documents', title: 'Документы', description: 'Здесь будет страница документов.' },
-  { path: '/wallet', title: 'Кошелек', description: 'Здесь будет страница кошелька.' },
+  { path: '/wallet', title: 'Кошелёк', description: 'Здесь будет страница кошелька.' },
   { path: '/business', title: 'Для бизнеса', description: 'Здесь будет страница бизнес-инструментов.' },
   {
     path: '/profile',

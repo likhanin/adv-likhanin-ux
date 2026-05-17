@@ -6,7 +6,14 @@ import './CabinetSectionPage.css'
 export function CabinetSectionPage({ title, description }) {
   const isRedesignEnabled = useFeatureToggle('redesignEnabled')
   const content = isRedesignEnabled ? (
-    <RedesignContentShell title={title} />
+    <RedesignContentShell
+      title={title}
+      panels={[
+        {
+          content: <p>{description}</p>,
+        },
+      ]}
+    />
   ) : (
     <>
       <div className="cabinet-section-page__title">

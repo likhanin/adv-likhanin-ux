@@ -2,7 +2,7 @@
   display: block;
   padding: 36px 16px 16px;
   border-radius: 24px;
-  background: #ffecc9;
+  background: var(--color-bg-default);
 }
 
 .postpay-debt-summary__body {
@@ -26,14 +26,14 @@
   margin-bottom: 4px;
   overflow: hidden;
   border-radius: 999px;
-  background: #fff;
+  background: var(--color-bg-elevation-1);
 }
 
 .postpay-debt-summary__progress span {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: #fca400;
+  background: var(--color-components-progress-warning);
 }
 
 .postpay-debt-summary__due {
@@ -41,5 +41,9 @@
 }
 
 :root[data-theme='dark'] .postpay-debt-summary {
-  background: #4b3f24;
+  background: var(--color-bg-default);
+}
+
+:root[data-theme='dark'] .profile-sidebar__wallet-stack--debt .postpay-debt-summary {
+  background: var(--color-bg-warning);
 }

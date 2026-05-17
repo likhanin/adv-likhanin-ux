@@ -44,10 +44,8 @@
   flex: none;
 }
 
-.knowledge-base-panel__share img {
-  width: 12px;
-  height: 16px;
-  flex: 0 0 12px;
+.knowledge-base-panel__share .icon {
+  flex: none;
 }
 
 .knowledge-base-panel__article-body {
@@ -63,13 +61,12 @@
   align-items: start;
   margin-left: -6px;
   border-radius: 24px;
-  background: #f2f1f0;
+  background: var(--color-bg-default);
   padding: 18px 20px;
 }
 
 .knowledge-base-panel__note-icon {
-  width: 16px;
-  height: 20px;
+  flex: none;
 }
 
 .knowledge-base-panel__note p {

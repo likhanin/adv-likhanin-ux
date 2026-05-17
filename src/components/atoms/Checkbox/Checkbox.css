@@ -2,12 +2,12 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  color: var(--color-ink);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-medium);
 }
 
 .checkbox input {
   width: 18px;
   height: 18px;
-  accent-color: var(--color-accent);
+  accent-color: var(--color-components-button-primary);
 }

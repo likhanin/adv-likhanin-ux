@@ -3,7 +3,7 @@
   display: inline-flex;
   overflow: hidden;
   border-radius: 50%;
-  background: #f5ebd9;
+  background: var(--color-bg-default);
 }
 
 .avatar--single {

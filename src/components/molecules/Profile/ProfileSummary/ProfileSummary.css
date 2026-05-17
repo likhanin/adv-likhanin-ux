@@ -13,7 +13,7 @@
 }
 
 .profile-summary__avatar-button:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-components-button-primary);
   outline-offset: 4px;
 }
 
@@ -33,21 +33,7 @@
 }
 
 .profile-summary__star {
-  color: #ffb831;
-}
-
-.profile-summary__avatar-modal {
-  width: auto;
-  max-width: min(calc(100vw - 48px), 1200px);
-  max-height: calc(100vh - 48px);
-  overflow: visible;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-.profile-summary__avatar-modal .app-modal__content {
-  padding: 0;
+  color: var(--color-text-warning);
 }
 
 .profile-summary__avatar-preview {
@@ -58,19 +44,13 @@
 .profile-summary__avatar-preview-image {
   display: block;
   width: auto;
-  max-width: min(calc(100vw - 48px), 1200px);
-  max-height: calc(100vh - 48px);
+  max-width: 100%;
+  max-height: min(520px, calc(100vh - 220px));
   object-fit: contain;
 }
 
 @media (max-width: 920px) {
-  .profile-summary__avatar-modal {
-    max-width: calc(100vw - 32px);
-    max-height: calc(100vh - 32px);
-  }
-
   .profile-summary__avatar-preview-image {
-    max-width: calc(100vw - 32px);
-    max-height: calc(100vh - 32px);
+    max-height: calc(100vh - 180px);
   }
 }

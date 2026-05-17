@@ -1,4 +1,4 @@
-import profileAvatar from '../../../../assets/true-PA.png'
+import profileAvatar from '../../../../assets/perfagency-avatar.svg'
 import { Avatar } from '../../../atoms/Avatar/Avatar'
 import { Text } from '../../../atoms/Text/Text'
 import { useModal } from '../../../../store/modal/useModal'
@@ -10,9 +10,7 @@ export function ProfileSummary({ title, rating, reviews }) {
   const handleAvatarPreviewOpen = () => {
     openModal({
       title,
-      showHeader: false,
-      showCloseButton: false,
-      panelClassName: 'profile-summary__avatar-modal',
+      size: 'm',
       content: (
         <div className="profile-summary__avatar-preview">
           <img className="profile-summary__avatar-preview-image" src={profileAvatar} alt={title} />

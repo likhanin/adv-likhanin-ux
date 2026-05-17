@@ -1,4 +1,4 @@
-import profileAvatar from '../../../assets/true-PA.png'
+import profileAvatar from '../../../assets/perfagency-avatar.svg'
 import { getAppCopy, useAppLocale } from '../../../i18n/useAppLocale'
 import './Avatar.css'
 

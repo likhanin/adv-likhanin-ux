@@ -1,0 +1,18 @@
+.input-message {
+  box-sizing: content-box;
+  margin: 0;
+  padding-bottom: 2px;
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--type-s10-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-s10-line-height);
+}
+
+.input-message--error {
+  color: var(--color-text-error);
+}
+
+.input-message--disabled {
+  opacity: 0.72;
+}

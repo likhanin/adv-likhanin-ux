@@ -20,7 +20,11 @@ export function FeatureTogglesProvider({ children, initialToggles = {} }) {
 
     root.lang = featureToggles.englishLocale ? 'en' : 'ru'
     root.dataset.redesign = featureToggles.redesignEnabled ? 'true' : 'false'
-  }, [featureToggles.darkTheme, featureToggles.englishLocale, featureToggles.redesignEnabled])
+  }, [
+    featureToggles.darkTheme,
+    featureToggles.englishLocale,
+    featureToggles.redesignEnabled,
+  ])
 
   const value = useMemo(
     () => ({

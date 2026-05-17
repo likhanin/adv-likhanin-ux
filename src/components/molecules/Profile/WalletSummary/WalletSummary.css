@@ -5,21 +5,21 @@
   gap: 16px;
   padding: 13px 16px 15px 16px;
   border-radius: 16px;
-  background: #F2F1F0;
+  background: var(--color-bg-default);
 }
 
 .wallet-summary__amount {
   display: block;
   margin: 3px 0 2px;
-  color: #000;
+  color: var(--color-text-primary);
 }
 
 .wallet-summary__label {
-  color: #757575;
+  color: var(--color-text-secondary);
 }
 
 .wallet-summary__note {
-  color: #000;
+  color: var(--color-text-primary);
 }
 
 @media (max-width: 640px) {

@@ -1,27 +1,27 @@
- :root {
+:root {
   --font-sans: 'Manrope', 'Segoe UI', 'SF Pro Display', 'Helvetica Neue', sans-serif;
   --font-letter-spacing-base: 0;
   --font-weight-medium: 500;
   --font-weight-extrabold: 800;
 
-  --type-h0-font-size: 48px;
-  --type-h0-line-height: 54px;
-  --type-h1-font-size: 32px;
-  --type-h1-line-height: 36px;
-  --type-h2-font-size: 26px;
-  --type-h2-line-height: 30px;
+  --type-h05-font-size: 48px;
+  --type-h05-line-height: 54px;
+  --type-h10-font-size: 32px;
+  --type-h10-line-height: 36px;
+  --type-h20-font-size: 26px;
+  --type-h20-line-height: 30px;
   --type-h25-font-size: 24px;
   --type-h25-line-height: 28px;
-  --type-h3-font-size: 21px;
-  --type-h3-line-height: 26px;
-  --type-h4-font-size: 18px;
-  --type-h4-line-height: 22px;
-  --type-h5-font-size: 16px;
-  --type-h5-line-height: 20px;
-  --type-h6-font-size: 14px;
-  --type-h6-line-height: 18px;
-  --type-h7-font-size: 13px;
-  --type-h7-line-height: 16px;
+  --type-h30-font-size: 21px;
+  --type-h30-line-height: 26px;
+  --type-h40-font-size: 18px;
+  --type-h40-line-height: 22px;
+  --type-h50-font-size: 16px;
+  --type-h50-line-height: 20px;
+  --type-h60-font-size: 14px;
+  --type-h60-line-height: 18px;
+  --type-h70-font-size: 13px;
+  --type-h70-line-height: 16px;
   --type-xl10-font-size: 21px;
   --type-xl10-line-height: 26px;
   --type-l10-font-size: 18px;
@@ -40,26 +40,49 @@
   --type-xs10-line-height: 14px;
   --type-xxs10-font-size: 9px;
   --type-xxs10-line-height: 14px;
+
+  --type-h0-font-size: var(--type-h05-font-size);
+  --type-h0-line-height: var(--type-h05-line-height);
+  --type-h1-font-size: var(--type-h10-font-size);
+  --type-h1-line-height: var(--type-h10-line-height);
+  --type-h2-font-size: var(--type-h20-font-size);
+  --type-h2-line-height: var(--type-h20-line-height);
+  --type-h3-font-size: var(--type-h30-font-size);
+  --type-h3-line-height: var(--type-h30-line-height);
+  --type-h4-font-size: var(--type-h40-font-size);
+  --type-h4-line-height: var(--type-h40-line-height);
+  --type-h5-font-size: var(--type-h50-font-size);
+  --type-h5-line-height: var(--type-h50-line-height);
+  --type-h6-font-size: var(--type-h60-font-size);
+  --type-h6-line-height: var(--type-h60-line-height);
+  --type-h7-font-size: var(--type-h70-font-size);
+  --type-h7-line-height: var(--type-h70-line-height);
 }
 
+.type-h05,
+.text--h05,
 .type-h0,
 .text--h0 {
-  font-size: var(--type-h0-font-size);
-  line-height: var(--type-h0-line-height);
+  font-size: var(--type-h05-font-size);
+  line-height: var(--type-h05-line-height);
   font-weight: var(--font-weight-extrabold);
 }
 
+.type-h10,
+.text--h10,
 .type-h1,
 .text--h1 {
-  font-size: var(--type-h1-font-size);
-  line-height: var(--type-h1-line-height);
+  font-size: var(--type-h10-font-size);
+  line-height: var(--type-h10-line-height);
   font-weight: var(--font-weight-extrabold);
 }
 
+.type-h20,
+.text--h20,
 .type-h2,
 .text--h2 {
-  font-size: var(--type-h2-font-size);
-  line-height: var(--type-h2-line-height);
+  font-size: var(--type-h20-font-size);
+  line-height: var(--type-h20-line-height);
   font-weight: var(--font-weight-extrabold);
 }
 
@@ -70,38 +93,48 @@
   font-weight: var(--font-weight-extrabold);
 }
 
+.type-h30,
+.text--h30,
 .type-h3,
 .text--h3 {
-  font-size: var(--type-h3-font-size);
-  line-height: var(--type-h3-line-height);
+  font-size: var(--type-h30-font-size);
+  line-height: var(--type-h30-line-height);
   font-weight: var(--font-weight-extrabold);
 }
 
+.type-h40,
+.text--h40,
 .type-h4,
 .text--h4 {
-  font-size: var(--type-h4-font-size);
-  line-height: var(--type-h4-line-height);
+  font-size: var(--type-h40-font-size);
+  line-height: var(--type-h40-line-height);
   font-weight: var(--font-weight-extrabold);
 }
 
+.type-h50,
+.text--h50,
 .type-h5,
 .text--h5 {
-  font-size: var(--type-h5-font-size);
-  line-height: var(--type-h5-line-height);
+  font-size: var(--type-h50-font-size);
+  line-height: var(--type-h50-line-height);
   font-weight: var(--font-weight-extrabold);
 }
 
+.type-h60,
+.text--h60,
 .type-h6,
 .text--h6 {
-  font-size: var(--type-h6-font-size);
-  line-height: var(--type-h6-line-height);
+  font-size: var(--type-h60-font-size);
+  line-height: var(--type-h60-line-height);
   font-weight: var(--font-weight-extrabold);
 }
 
+.type-h70,
+.text--h70,
 .type-h7,
 .text--h7 {
-  font-size: var(--type-h7-font-size);
-  line-height: var(--type-h7-line-height);
+  font-size: var(--type-h70-font-size);
+  line-height: var(--type-h70-line-height);
   font-weight: var(--font-weight-extrabold);
 }
 

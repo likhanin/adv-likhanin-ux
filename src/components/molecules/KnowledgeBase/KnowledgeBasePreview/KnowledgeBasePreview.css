@@ -1,7 +1,7 @@
 .knowledge-base-panel__preview {
   overflow: hidden;
   border-radius: 32px;
-  background: linear-gradient(180deg, #f9f8f6 0%, #f5f4f2 100%);
+  background: linear-gradient(180deg, var(--color-bg-elevation-2) 0%, var(--color-bg-surface) 100%);
 }
 
 .knowledge-base-panel__preview--disabled {
