@@ -8,6 +8,7 @@
   border: 0;
   background: var(--color-bg-default);
   color: var(--color-text-primary);
+  cursor: text;
   transition:
     box-shadow 160ms ease,
     background 160ms ease,
@@ -68,12 +69,6 @@
   field-sizing: content;
 }
 
-.input-control--has-prefix .input-control__input:focus:placeholder-shown,
-.input-control--has-postfix .input-control__input:focus:placeholder-shown {
-  flex: 0 0 1px;
-  width: 1px;
-}
-
 .input-control__input::placeholder {
   color: var(--color-text-secondary);
   opacity: 1;
@@ -81,6 +76,10 @@
 
 .input-control__input:focus::placeholder {
   color: transparent;
+}
+
+.input-control--has-postfix .input-control__input:focus::placeholder {
+  color: var(--color-text-secondary);
 }
 
 .input-control__input:focus {
